@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<title>DevDocs AI - Repository Overview: fastify/fastify</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-error": "#690005",
+            "on-tertiary-fixed-variant": "#005236",
+            "tertiary-container": "#00885d",
+            "outline-variant": "#464554",
+            "surface-container-high": "#272a31",
+            "on-secondary-container": "#002c47",
+            "error": "#ffb4ab",
+            "primary": "#c0c1ff",
+            "tertiary-fixed": "#6ffbbe",
+            "surface-container-lowest": "#0b0e14",
+            "on-secondary-fixed": "#001d31",
+            "on-surface-variant": "#c7c4d7",
+            "surface-tint": "#c0c1ff",
+            "on-primary": "#1000a9",
+            "inverse-primary": "#494bd6",
+            "surface-container-highest": "#32353c",
+            "on-secondary": "#003351",
+            "on-surface": "#e1e2eb",
+            "surface-container-low": "#191c22",
+            "on-primary-fixed": "#07006c",
+            "secondary": "#93ccff",
+            "on-primary-container": "#0d0096",
+            "outline": "#908fa0",
+            "on-primary-fixed-variant": "#2f2ebe",
+            "background": "#10131a",
+            "surface-container": "#1d2026",
+            "on-tertiary": "#003824",
+            "primary-container": "#8083ff",
+            "primary-fixed": "#e1e0ff",
+            "on-tertiary-fixed": "#002113",
+            "inverse-on-surface": "#2e3037",
+            "error-container": "#93000a",
+            "tertiary": "#4edea3",
+            "on-error-container": "#ffdad6",
+            "on-background": "#e1e2eb",
+            "primary-fixed-dim": "#c0c1ff",
+            "secondary-fixed-dim": "#93ccff",
+            "secondary-fixed": "#cce5ff",
+            "on-secondary-fixed-variant": "#004b73",
+            "surface-variant": "#32353c",
+            "on-tertiary-container": "#000703",
+            "inverse-surface": "#e1e2eb",
+            "tertiary-fixed-dim": "#4edea3",
+            "surface-bright": "#363940",
+            "surface-dim": "#10131a",
+            "secondary-container": "#3198dc",
+            "surface": "#10131a"
+          },
+          fontFamily: {
+            sans: ["Geist", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#0b0e14] font-sans text-on-surface antialiased selection:bg-primary-container/30">
+<!-- Refined Top Navigation Bar -->
+<header class="fixed top-0 left-0 right-0 h-14 bg-[#10131a]/90 backdrop-blur-xl z-50 flex items-center justify-between px-6 border-b border-white/[0.06]">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2.5">
+<img alt="DevDocs AI Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W7FoOzIg-FT9Xma1EW2ryYI3hJLwrXIn6B03OJZ2B9Ez8KB9aTbUMKQBQJxT6a2WPMZXmISAjhOoJ98r3QluLriLJIaxk2O7MW2LWXb3xScL1qG0lfQ-enXdv-O5QjLUzMaRV4KSpoh7yEMjje4VwTw0P-O7rIqLvPSGS0tdNZFM1YjG03Co2_ur4a8Idp_NPx1RvB_3cEKm09PBrB9_ZlfJSeujSfzQ76ZMjEhw"/>
+<span class="text-[15px] text-on-surface font-semibold tracking-tight">DevDocs<span class="text-primary ml-0.5">AI</span></span>
+</div>
+<div class="hidden md:flex items-center gap-2 text-xs text-on-surface-variant font-mono">
+<span class="text-outline/40">/</span>
+<span class="hover:text-on-surface cursor-pointer transition-colors">workspace</span>
+<span class="text-outline/40">/</span>
+<span class="text-on-surface font-medium">active-repo</span>
+</div>
+</div>
+<!-- Center Quick Search -->
+<div class="flex-1 max-w-md mx-6 hidden lg:block">
+<div class="relative flex items-center bg-[#191c22] border border-white/[0.08] px-3.5 py-1.5 rounded-lg focus-within:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-outline text-[1.125rem] mr-2.5">terminal</span>
+<input class="w-full bg-transparent font-mono text-xs text-on-surface placeholder:text-outline/60 focus:outline-none" placeholder="Search symbols, AST nodes, or files..." type="text"/>
+<kbd class="font-mono text-[10px] bg-[#272a31] px-1.5 py-0.5 rounded text-on-surface-variant border border-white/[0.05]">⌘K</kbd>
+</div>
+</div>
+<!-- Right Header Utilities -->
+<div class="flex items-center gap-5">
+<nav class="hidden sm:flex items-center gap-4 text-xs font-medium">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="repositories" href="#">Repositories</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="documentation" href="#">Documentation</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="api-status" href="#">API Status</a>
+</nav>
+<div class="flex items-center gap-2.5 pl-2 border-l border-white/[0.08]">
+<button class="w-8 h-8 rounded-lg bg-[#191c22] border border-white/[0.06] flex items-center justify-center text-on-surface-variant hover:bg-[#272a31] hover:text-on-surface transition-colors" title="Quick Query" type="button">
+<span class="material-symbols-outlined text-[1.125rem]">search</span>
+</button>
+<img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjHLuv0EtR25PQZF-7YFluA8YkKHdfZ21D92FmD2Ni57BhKQARTdE5fjm2idXl_nvJq9-rk-k2uObCO9MY4KaNnApdusT86UIwYwzZ75x7QZQ6RXCNKU-nn5KMHc6sor62AMfa5vPkpXDDekqj53AZFZZM3JQaK7_pC33-Vxifvphnn94RYfP7BWYEdaMYutAvEROJ2Tld_KcYsq8WW7YMpj1FwTVq9zK3R1u1WA"/>
+</div>
+</div>
+</header>
+<!-- Refined Left Sidebar -->
+<aside class="fixed left-0 top-14 bottom-0 w-64 bg-[#0e1117] border-r border-white/[0.06] z-40 flex flex-col justify-between py-4">
+<div class="flex flex-col gap-5 px-3">
+<div class="px-2.5 py-1 flex items-center justify-between">
+<span class="font-mono text-[10px] uppercase text-outline/80 tracking-wider">Codebase Context</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-tertiary/10 text-tertiary border border-tertiary/20">READY</span>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-[#191c22] hover:text-on-surface transition-all text-xs font-medium" data-path="repositories" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[1.125rem]">folder_data</span>
+<span>Repositories</span>
+</div>
+<kbd class="font-mono text-[10px] text-outline/60">G R</kbd>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-[#191c22] hover:text-on-surface transition-all text-xs font-medium" data-path="add-repository" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[1.125rem]">add_circle</span>
+<span>Add Repository</span>
+</div>
+<kbd class="font-mono text-[10px] text-outline/60">N</kbd>
+</a>
+<a aria-current="page" class="flex items-center justify-between px-3 py-2 rounded-lg transition-all bg-[#1d2026] text-on-surface border border-white/[0.08] shadow-sm text-xs font-medium" data-path="repository-overview" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[1.125rem] text-primary">account_tree</span>
+<span class="font-semibold text-white">Repository Overview</span>
+</div>
+<kbd class="font-mono text-[10px] text-primary/80">O</kbd>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-[#191c22] hover:text-on-surface transition-all text-xs font-medium" data-path="repository-chat" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[1.125rem]">chat_bubble</span>
+<span>Repository Chat</span>
+</div>
+<kbd class="font-mono text-[10px] text-outline/60">C</kbd>
+</a>
+</nav>
+<div class="mt-2 px-1">
+<span class="font-mono text-[10px] uppercase text-outline/80 tracking-wider block mb-2 px-1.5">Diagnostics &amp; Observability</span>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-[#191c22] hover:text-on-surface transition-all text-xs font-medium" data-path="ingestion-diagnostics" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[1.125rem]">insights</span>
+<span>Ingestion Health</span>
+</div>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-[#191c22] hover:text-on-surface transition-all text-xs font-medium" data-path="system-settings" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[1.125rem]">tune</span>
+<span>Parser Config</span>
+</div>
+</a>
+</nav>
+</div>
+</div>
+<!-- Sidebar Bottom Status Footer -->
+<div class="px-3">
+<div class="p-3 bg-[#13161f] border border-white/[0.06] rounded-xl flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="font-mono text-[10px] uppercase text-on-surface-variant tracking-wider font-semibold">AST ENGINE</span>
+<span class="font-mono text-[10px] text-tertiary font-medium">v4.1.2</span>
+</div>
+<p class="text-[11px] text-outline/80 leading-snug">Parser cluster synchronized with local git heads.</p>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<div class="pl-64">
+<main class="w-full pt-14 min-h-screen bg-[#0e1118]">
+<div class="max-w-[1440px] mx-auto px-8 py-8 flex flex-col gap-7">
+<!-- Top Header & Actions Section -->
+<div class="flex flex-col lg:flex-row lg:items-start justify-between gap-6 pb-2 border-b border-white/[0.06]">
+<div class="flex flex-col gap-2.5">
+<!-- Breadcrumbs / Meta tags -->
+<div class="flex items-center gap-2 font-mono text-xs tracking-wider text-outline">
+<span class="text-on-surface-variant font-medium">NODE.JS ENGINE</span>
+<span class="text-outline/40">/</span>
+<span class="text-on-surface-variant font-medium">MIT LICENSE</span>
+<span class="text-outline/40">/</span>
+<span class="inline-flex items-center gap-1.5 text-tertiary font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+                SYNCED
+              </span>
+</div>
+<!-- Title & Identifiers -->
+<div class="flex flex-wrap items-center gap-3.5">
+<h1 class="text-3xl font-bold tracking-tight text-white font-sans">fastify/fastify</h1>
+<!-- Commit Badge -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#1d2026] border border-white/[0.08] font-mono text-xs text-on-surface shadow-sm">
+<span class="material-symbols-outlined text-[0.875rem] text-primary">commit</span>
+<span>#7b4a2e1</span>
+</div>
+<!-- Branch Badge -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#1d2026] border border-white/[0.08] font-mono text-xs text-on-surface-variant shadow-sm">
+<span class="material-symbols-outlined text-[0.875rem] text-outline">fork_right</span>
+<span>main</span>
+</div>
+<!-- Emerald Status Badge -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-tertiary/10 text-tertiary border border-tertiary/25 font-mono text-xs font-semibold tracking-wide uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Ready (Full Coverage)
+              </span>
+</div>
+<!-- Timestamp Subtitle -->
+<p class="text-xs text-outline flex items-center gap-1.5 mt-0.5">
+<span class="material-symbols-outlined text-[0.9375rem] text-outline/80">schedule</span>
+              Last indexed snapshot: 2 hours ago via AST v4.1.2 engine (342 files synchronized)
+            </p>
+</div>
+<!-- Generous Action Button Cluster -->
+<div class="flex flex-wrap items-center gap-3">
+<button class="h-10 px-4 rounded-lg bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white font-medium text-xs flex items-center gap-2 shadow-lg shadow-indigo-600/20 border border-indigo-400/30 transition-all cursor-pointer" id="btn-start-chat">
+<span class="material-symbols-outlined text-[1.125rem]" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+              Start Codebase Chat
+            </button>
+<button class="h-10 px-3.5 rounded-lg bg-[#191c22] hover:bg-[#272a31] text-on-surface font-medium text-xs flex items-center gap-2 border border-white/[0.08] transition-all shadow-sm cursor-pointer" id="btn-refresh-index">
+<span class="material-symbols-outlined text-[1.125rem] text-primary" id="refresh-icon">sync</span>
+              Refresh Index
+            </button>
+<button class="h-10 px-3.5 rounded-lg bg-[#191c22] hover:bg-[#272a31] text-on-surface font-medium text-xs flex items-center gap-2 border border-white/[0.08] transition-all shadow-sm cursor-pointer" id="btn-export-spec">
+<span class="material-symbols-outlined text-[1.125rem] text-outline">download</span>
+              Export Spec
+            </button>
+<button class="h-10 px-3.5 rounded-lg bg-[#191c22] hover:bg-error-container/40 text-error hover:text-white font-medium text-xs flex items-center gap-2 border border-error/20 transition-all shadow-sm cursor-pointer" id="btn-open-delete-modal">
+<span class="material-symbols-outlined text-[1.125rem]">delete</span>
+              Remove
+            </button>
+</div>
+</div>
+<!-- 4-Column Key Telemetry Metric Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1: Indexed Files -->
+<div class="p-5 rounded-xl bg-[#141720] border border-white/[0.08] shadow-sm flex flex-col justify-between hover:border-white/[0.14] transition-all">
+<div class="flex items-center justify-between mb-3">
+<span class="font-mono text-[11px] text-outline/90 uppercase tracking-wider font-semibold">Indexed Files</span>
+<span class="material-symbols-outlined text-[1.125rem] text-primary">description</span>
+</div>
+<div>
+<div class="text-3xl font-bold tracking-tight text-white">342</div>
+<p class="text-xs text-tertiary mt-2 flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[0.875rem]">check_circle</span>
+                100% Tree-sitter verified
+              </p>
+</div>
+</div>
+<!-- Card 2: Semantic Chunks -->
+<div class="p-5 rounded-xl bg-[#141720] border border-white/[0.08] shadow-sm flex flex-col justify-between hover:border-white/[0.14] transition-all">
+<div class="flex items-center justify-between mb-3">
+<span class="font-mono text-[11px] text-outline/90 uppercase tracking-wider font-semibold">Semantic Chunks</span>
+<span class="material-symbols-outlined text-[1.125rem] text-secondary">memory</span>
+</div>
+<div>
+<div class="text-3xl font-bold tracking-tight text-white">1,420</div>
+<p class="text-xs text-outline/90 mt-2 font-mono">pgvector (1536 dim, cosine)</p>
+</div>
+</div>
+<!-- Card 3: Secret Scanning -->
+<div class="p-5 rounded-xl bg-[#141720] border border-white/[0.08] shadow-sm flex flex-col justify-between hover:border-white/[0.14] transition-all">
+<div class="flex items-center justify-between mb-3">
+<span class="font-mono text-[11px] text-outline/90 uppercase tracking-wider font-semibold">Secret Scanning</span>
+<span class="material-symbols-outlined text-[1.125rem] text-tertiary">security</span>
+</div>
+<div>
+<div class="flex items-baseline gap-1.5">
+<span class="text-3xl font-bold tracking-tight text-tertiary">0</span>
+<span class="text-xs text-on-surface-variant font-medium">findings</span>
+</div>
+<p class="text-xs text-tertiary/90 mt-2 flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[0.875rem]">verified_user</span>
+                Clean entropy checks
+              </p>
+</div>
+</div>
+<!-- Card 4: Filtered Binaries -->
+<div class="p-5 rounded-xl bg-[#141720] border border-white/[0.08] shadow-sm flex flex-col justify-between hover:border-white/[0.14] transition-all">
+<div class="flex items-center justify-between mb-3">
+<span class="font-mono text-[11px] text-outline/90 uppercase tracking-wider font-semibold">Filtered Binaries</span>
+<span class="material-symbols-outlined text-[1.125rem] text-amber-400">filter_alt</span>
+</div>
+<div>
+<div class="flex items-baseline gap-1.5">
+<span class="text-3xl font-bold tracking-tight text-white">4</span>
+<span class="text-xs text-on-surface-variant font-medium">skipped</span>
+</div>
+<p class="text-xs text-amber-300/80 mt-2 font-mono">.png, .wasm omitted</p>
+</div>
+</div>
+</div>
+<!-- Navigation Tab Bar -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-1.5 bg-[#141720] rounded-xl border border-white/[0.08]">
+<div class="flex items-center gap-1.5" role="tablist">
+<button class="tab-button active flex items-center gap-2 px-4 py-2 rounded-lg bg-[#222530] text-white border border-white/[0.08] text-xs font-semibold shadow-sm transition-all" id="tab-btn-architecture" onclick="switchTab('architecture')">
+<span class="material-symbols-outlined text-[1rem] text-primary">account_tree</span>
+<span>1. Architecture Breakdown</span>
+</button>
+<button class="tab-button flex items-center gap-2 px-4 py-2 rounded-lg text-on-surface-variant hover:text-white hover:bg-white/[0.03] text-xs font-medium transition-all" id="tab-btn-pipeline" onclick="switchTab('pipeline')">
+<span class="material-symbols-outlined text-[1rem]">lan</span>
+<span>2. Ingestion Pipeline &amp; Chunks</span>
+</button>
+<button class="tab-button flex items-center gap-2 px-4 py-2 rounded-lg text-on-surface-variant hover:text-white hover:bg-white/[0.03] text-xs font-medium transition-all" id="tab-btn-symbols" onclick="switchTab('symbols')">
+<span class="material-symbols-outlined text-[1rem]">data_object</span>
+<span>3. Indexed Symbols &amp; Modules</span>
+</button>
+</div>
+<div class="hidden md:flex items-center gap-2 px-3 py-1 font-mono text-[11px] text-outline">
+<span>AST ENGINE</span>
+<span class="text-tertiary font-medium">TREESITTER_NODEJS_OK</span>
+</div>
+</div>
+<!-- TAB 1: Architecture Breakdown (Active) -->
+<section class="tab-content flex flex-col gap-6" id="tab-architecture">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Left / Center Column: Synthesized Architecture Hero & 2x2 Matrix -->
+<div class="lg:col-span-8 flex flex-col gap-5">
+<!-- Prominent Summary Banner -->
+<div class="p-6 bg-[#141720] border border-white/[0.08] rounded-xl shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[1.25rem]">auto_awesome</span>
+<span class="font-mono text-xs uppercase tracking-wider text-primary font-semibold">Synthesized Architecture Profile</span>
+</div>
+<span class="font-mono text-[11px] text-outline bg-white/[0.03] px-2 py-0.5 rounded border border-white/[0.06]">Model: devdocs-ast-3.5</span>
+</div>
+<h2 class="text-2xl font-bold tracking-tight text-white mb-2.5">Modular Monolith with Fast-Path Router</h2>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                  Fastify delivers ultra-low overhead HTTP transport structured around an encapsulated plugin hierarchy (<code class="text-primary font-mono text-xs bg-white/[0.04] px-1 py-0.5 rounded">avvio</code>), a radix-tree route dispatcher (<code class="text-primary font-mono text-xs bg-white/[0.04] px-1 py-0.5 rounded">find-my-way</code>), and high-throughput serialization compilation powered by fast-json-stringify and AJV JSON schema validators.
+                </p>
+</div>
+<!-- 4 Architectural Component Cards (2x2 Grid) with Ample Whitespace -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Component 1: Core Request Pipeline -->
+<div class="p-5 bg-[#141720] border border-white/[0.08] rounded-xl hover:border-white/[0.14] transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 text-primary font-semibold text-sm mb-2.5">
+<span class="material-symbols-outlined text-[1.125rem]">speed</span>
+<h3>Core Request Pipeline</h3>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                      Incoming raw Node <code class="text-white font-mono">http.IncomingMessage</code> is wrapped in immutable Request wrappers. Pre-allocated context objects mitigate GC thrashing during peak request loops.
+                    </p>
+</div>
+<div class="mt-4 pt-3 border-t border-white/[0.05] flex items-center justify-between font-mono text-[11px] text-outline">
+<span>lib/reqIdGenFactory.js</span>
+<span class="text-tertiary">lib/handleRequest.js:28</span>
+</div>
+</div>
+<!-- Component 2: Plugin Architecture -->
+<div class="p-5 bg-[#141720] border border-white/[0.08] rounded-xl hover:border-white/[0.14] transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 text-tertiary font-semibold text-sm mb-2.5">
+<span class="material-symbols-outlined text-[1.125rem]">extension</span>
+<h3>Plugin Architecture (Avvio)</h3>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                      Asynchronous DAG dependency resolution. Context isolation guarantees decorators, hooks, and sub-routes are encapsulated unless explicitly bypassed via <code class="text-white font-mono">fastify-plugin</code>.
+                    </p>
+</div>
+<div class="mt-4 pt-3 border-t border-white/[0.05] flex items-center justify-between font-mono text-[11px] text-outline">
+<span>lib/pluginOverride.js</span>
+<span class="text-tertiary">lib/decorate.js:14</span>
+</div>
+</div>
+<!-- Component 3: Schema Validation Engine -->
+<div class="p-5 bg-[#141720] border border-white/[0.08] rounded-xl hover:border-white/[0.14] transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 text-amber-400 font-semibold text-sm mb-2.5">
+<span class="material-symbols-outlined text-[1.125rem]">fact_check</span>
+<h3>Schema Validation Engine</h3>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                      Pre-compiles payload validation directly into V8-optimized machine paths via AJV schemas. Compiles response schemas using <code class="text-white font-mono">fast-json-stringify</code> for zero-overhead JSON serialization.
+                    </p>
+</div>
+<div class="mt-4 pt-3 border-t border-white/[0.05] flex items-center justify-between font-mono text-[11px] text-outline">
+<span>lib/validation.js:82</span>
+<span class="text-tertiary">AJV v8 Compiler</span>
+</div>
+</div>
+<!-- Component 4: Lifecycle Hooks Subsystem -->
+<div class="p-5 bg-[#141720] border border-white/[0.08] rounded-xl hover:border-white/[0.14] transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 text-secondary font-semibold text-sm mb-2.5">
+<span class="material-symbols-outlined text-[1.125rem]">anchor</span>
+<h3>Lifecycle Hooks Subsystem</h3>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                      Sequential iterator enforcing <code class="text-white font-mono">onRequest</code>, <code class="text-white font-mono">preParsing</code>, <code class="text-white font-mono">preValidation</code>, <code class="text-white font-mono">preHandler</code>, <code class="text-white font-mono">preSerialization</code>, <code class="text-white font-mono">onSend</code>, and <code class="text-white font-mono">onResponse</code> contracts.
+                    </p>
+</div>
+<div class="mt-4 pt-3 border-t border-white/[0.05] flex items-center justify-between font-mono text-[11px] text-outline">
+<span>lib/hooks.js:114</span>
+<span class="text-tertiary">7 Stage Hooks</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Rail: Telemetry, Graph & Density Meter -->
+<div class="lg:col-span-4 flex flex-col gap-5">
+<!-- Module Dependencies Visual Graph Rail -->
+<div class="p-5 bg-[#141720] border border-white/[0.08] rounded-xl shadow-sm flex flex-col">
+<div class="flex items-center justify-between mb-3.5">
+<span class="font-mono text-[11px] uppercase tracking-wider text-outline font-semibold">Module Dependencies</span>
+<span class="font-mono text-[11px] text-tertiary font-semibold">99.8% AST Resolution</span>
+</div>
+<!-- Dependency Diagram Preview Box -->
+<div class="w-full bg-[#0a0d13] rounded-lg p-3 border border-white/[0.06] flex items-center justify-center">
+<svg class="w-full h-44 text-on-surface-variant" fill="none" viewbox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+<!-- Background Grid -->
+<line stroke="currentColor" stroke-dasharray="2 2" stroke-opacity="0.08" x1="10" x2="310" y1="50" y2="50"></line>
+<line stroke="currentColor" stroke-dasharray="2 2" stroke-opacity="0.08" x1="10" x2="310" y1="100" y2="100"></line>
+<line stroke="currentColor" stroke-dasharray="2 2" stroke-opacity="0.08" x1="10" x2="310" y1="150" y2="150"></line>
+<!-- Connector Lines -->
+<path d="M160 36 L160 70 M160 98 L75 140 M160 98 L160 140 M160 98 L245 140" stroke="currentColor" stroke-opacity="0.25" stroke-width="1.5"></path>
+<!-- Node 1: fastify() root -->
+<rect fill="#4f46e5" fill-opacity="0.2" height="26" rx="4" stroke="#6366f1" stroke-opacity="0.4" width="104" x="108" y="16"></rect>
+<text fill="#c0c1ff" font-family="JetBrains Mono" font-size="10" font-weight="600" text-anchor="middle" x="160" y="33">fastify() root</text>
+<!-- Node 2: find-my-way -->
+<rect fill="#1d2026" height="28" rx="4" stroke="currentColor" stroke-opacity="0.2" width="112" x="104" y="70"></rect>
+<text fill="#e1e2eb" font-family="JetBrains Mono" font-size="10" text-anchor="middle" x="160" y="88">find-my-way</text>
+<!-- Node 3: Hooks Pipeline -->
+<rect fill="#1d2026" height="26" rx="4" stroke="currentColor" stroke-opacity="0.2" width="96" x="27" y="140"></rect>
+<text fill="#e1e2eb" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="75" y="157">Hooks Pipeline</text>
+<!-- Node 4: Avvio -->
+<rect fill="#00885d" fill-opacity="0.2" height="26" rx="4" stroke="#4edea3" stroke-opacity="0.4" width="62" x="134" y="140"></rect>
+<text fill="#4edea3" font-family="JetBrains Mono" font-size="9" font-weight="600" text-anchor="middle" x="165" y="157">Avvio</text>
+<!-- Node 5: Serializer -->
+<rect fill="#ca8100" fill-opacity="0.2" height="26" rx="4" stroke="#ffb95f" stroke-opacity="0.4" width="90" x="205" y="140"></rect>
+<text fill="#ffb95f" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="250" y="157">fast-json-str</text>
+</svg>
+</div>
+<!-- Rail Stats -->
+<div class="mt-4 flex flex-col gap-2 text-xs">
+<div class="flex items-center justify-between py-1 border-b border-white/[0.04]">
+<span class="text-on-surface-variant">Dynamic dispatch latency</span>
+<span class="font-mono text-tertiary font-semibold">~0.12 ms/req</span>
+</div>
+<div class="flex items-center justify-between py-1 border-b border-white/[0.04]">
+<span class="text-on-surface-variant">Plugin tree nesting depth</span>
+<span class="font-mono text-white font-medium">14 levels max</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="text-on-surface-variant">Cyclic references detected</span>
+<span class="font-mono text-tertiary font-semibold">0 cycles</span>
+</div>
+</div>
+</div>
+<!-- Semantic Density Meter Card -->
+<div class="p-5 bg-[#141720] border border-white/[0.08] rounded-xl shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-mono text-[11px] uppercase tracking-wider text-outline font-semibold">Semantic Density</span>
+<span class="material-symbols-outlined text-primary text-[1.125rem]">verified</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold tracking-tight text-white">94.4%</span>
+<span class="text-xs text-outline font-medium">docstring + typing ratio</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-[#0a0d13] h-2.5 rounded-full overflow-hidden p-0.5 border border-white/[0.06]">
+<div class="bg-gradient-to-r from-primary to-indigo-400 h-full rounded-full transition-all duration-500" style="width: 94.4%"></div>
+</div>
+<p class="text-xs text-outline/90 leading-relaxed mt-0.5">
+                  TypeScript declaration definitions mirror 100% of exported runtime interfaces in <code class="font-mono text-white text-[11px]">fastify.d.ts</code>.
+                </p>
+</div>
+</div>
+</div>
+</section>
+<!-- TAB 2: Ingestion Pipeline & Chunks Breakdown -->
+<section class="tab-content hidden flex flex-col gap-6" id="tab-pipeline">
+<div class="p-6 bg-[#141720] border border-white/[0.08] rounded-xl shadow-sm flex flex-col">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+<div>
+<span class="font-mono text-xs uppercase tracking-wider text-tertiary font-semibold">Ingestion Telemetry Stream</span>
+<h2 class="text-2xl font-bold tracking-tight text-white">Full-Stack Code Ingestion Pipeline</h2>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#191c22] border border-white/[0.08] font-mono text-xs text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span>PIPELINE VERIFIED IN 4.82s</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3">
+<div class="flex flex-col p-4 bg-[#191c22] border border-white/[0.06] rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="font-mono text-primary font-semibold text-[11px]">01. FETCH</span>
+<span class="material-symbols-outlined text-tertiary text-[1rem]">check_circle</span>
+</div>
+<h3 class="text-sm font-semibold text-white mb-1">GitHub Archive</h3>
+<p class="text-xs text-outline">Ref <code class="font-mono text-white">7b4a2e1</code>.</p>
+<span class="font-mono text-[10px] text-on-surface-variant mt-4">8.4 MB / 180ms</span>
+</div>
+<div class="flex flex-col p-4 bg-[#191c22] border border-white/[0.06] rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="font-mono text-primary font-semibold text-[11px]">02. FILTER</span>
+<span class="material-symbols-outlined text-tertiary text-[1rem]">check_circle</span>
+</div>
+<h3 class="text-sm font-semibold text-white mb-1">File Filtering</h3>
+<p class="text-xs text-outline">Omitted binary artifacts.</p>
+<span class="font-mono text-[10px] text-on-surface-variant mt-4">342 kept / 4 bin</span>
+</div>
+<div class="flex flex-col p-4 bg-[#191c22] border border-white/[0.06] rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="font-mono text-primary font-semibold text-[11px]">03. AUDIT</span>
+<span class="material-symbols-outlined text-tertiary text-[1rem]">check_circle</span>
+</div>
+<h3 class="text-sm font-semibold text-white mb-1">Secret Scan</h3>
+<p class="text-xs text-outline">Regex &amp; entropy checks.</p>
+<span class="font-mono text-[10px] text-tertiary mt-4">0 Violations</span>
+</div>
+<div class="flex flex-col p-4 bg-[#191c22] border border-white/[0.06] rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="font-mono text-primary font-semibold text-[11px]">04. PARSE</span>
+<span class="material-symbols-outlined text-tertiary text-[1rem]">check_circle</span>
+</div>
+<h3 class="text-sm font-semibold text-white mb-1">Tree-sitter AST</h3>
+<p class="text-xs text-outline">Full grammar parse.</p>
+<span class="font-mono text-[10px] text-on-surface-variant mt-4">8,419 Nodes</span>
+</div>
+<div class="flex flex-col p-4 bg-[#191c22] border border-white/[0.06] rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="font-mono text-primary font-semibold text-[11px]">05. SLICE</span>
+<span class="material-symbols-outlined text-tertiary text-[1rem]">check_circle</span>
+</div>
+<h3 class="text-sm font-semibold text-white mb-1">Chunking</h3>
+<p class="text-xs text-outline">AST syntax bounds.</p>
+<span class="font-mono text-[10px] text-on-surface-variant mt-4">1,420 Chunks</span>
+</div>
+<div class="flex flex-col p-4 bg-[#191c22] border border-white/[0.06] rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="font-mono text-primary font-semibold text-[11px]">06. VECTOR</span>
+<span class="material-symbols-outlined text-tertiary text-[1rem]">check_circle</span>
+</div>
+<h3 class="text-sm font-semibold text-white mb-1">pgvector</h3>
+<p class="text-xs text-outline">HNSW cosine index.</p>
+<span class="font-mono text-[10px] text-tertiary mt-4">1,420 Vectors</span>
+</div>
+</div>
+</div>
+</section>
+<!-- TAB 3: Indexed Symbols & Module Browser -->
+<section class="tab-content hidden flex flex-col gap-5" id="tab-symbols">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-[#141720] border border-white/[0.08] rounded-xl">
+<div class="relative flex-1 max-w-lg">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[1.125rem]">search</span>
+<input class="w-full bg-[#191c22] border border-white/[0.08] pl-9 pr-4 py-2 rounded-lg font-mono text-xs text-on-surface placeholder:text-outline/60 focus:outline-none focus:border-primary/50 transition-colors" id="symbol-search-input" onkeyup="filterSymbols()" placeholder="Filter indexed classes, interfaces, hooks, methods..." type="text"/>
+</div>
+<div class="flex flex-wrap items-center gap-1.5">
+<button class="symbol-filter-btn px-3 py-1.5 rounded-lg bg-primary text-on-primary font-medium text-xs" onclick="setFilter('all', this)">All (9)</button>
+<button class="symbol-filter-btn px-3 py-1.5 rounded-lg bg-[#191c22] text-on-surface-variant border border-white/[0.06] hover:bg-[#272a31] font-medium text-xs" onclick="setFilter('interface', this)">Interfaces</button>
+<button class="symbol-filter-btn px-3 py-1.5 rounded-lg bg-[#191c22] text-on-surface-variant border border-white/[0.06] hover:bg-[#272a31] font-medium text-xs" onclick="setFilter('class', this)">Classes</button>
+<button class="symbol-filter-btn px-3 py-1.5 rounded-lg bg-[#191c22] text-on-surface-variant border border-white/[0.06] hover:bg-[#272a31] font-medium text-xs" onclick="setFilter('function', this)">Functions</button>
+<button class="symbol-filter-btn px-3 py-1.5 rounded-lg bg-[#191c22] text-on-surface-variant border border-white/[0.06] hover:bg-[#272a31] font-medium text-xs" onclick="setFilter('hook', this)">Hooks</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="symbols-container">
+<div class="symbol-card flex flex-col justify-between p-5 bg-[#141720] border border-white/[0.08] rounded-xl hover:border-white/[0.16] transition-all group" data-name="FastifyInstance" data-type="interface">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary border border-primary/20 font-mono text-[10px] uppercase">Interface</span>
+<span class="material-symbols-outlined text-outline text-[1.125rem] group-hover:text-primary transition-colors">open_in_new</span>
+</div>
+<h4 class="font-mono text-white font-semibold text-sm mb-1.5">FastifyInstance</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed line-clamp-2">
+                  Primary application interface binding HTTP server, routing context, plugin registration, and server lifecycles.
+                </p>
+</div>
+<div class="mt-4 pt-3 border-t border-white/[0.04] flex items-center justify-between font-mono text-[11px] text-outline">
+<span class="text-tertiary">types/instance.d.ts:24</span>
+<span>18 References</span>
+</div>
+</div>
+<div class="symbol-card flex flex-col justify-between p-5 bg-[#141720] border border-white/[0.08] rounded-xl hover:border-white/[0.16] transition-all group" data-name="RouteOptions" data-type="interface">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary border border-primary/20 font-mono text-[10px] uppercase">Interface</span>
+<span class="material-symbols-outlined text-outline text-[1.125rem] group-hover:text-primary transition-colors">open_in_new</span>
+</div>
+<h4 class="font-mono text-white font-semibold text-sm mb-1.5">RouteOptions</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed line-clamp-2">
+                  Schema definition object describing route path, HTTP method, serializer compiler, schema handlers, and pre-validation.
+                </p>
+</div>
+<div class="mt-4 pt-3 border-t border-white/[0.04] flex items-center justify-between font-mono text-[11px] text-outline">
+<span class="text-tertiary">types/route.d.ts:65</span>
+<span>42 References</span>
+</div>
+</div>
+<div class="symbol-card flex flex-col justify-between p-5 bg-[#141720] border border-white/[0.08] rounded-xl hover:border-white/[0.16] transition-all group" data-name="addHook" data-type="function">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="px-2 py-0.5 rounded bg-tertiary/10 text-tertiary border border-tertiary/20 font-mono text-[10px] uppercase">Function</span>
+<span class="material-symbols-outlined text-outline text-[1.125rem] group-hover:text-primary transition-colors">open_in_new</span>
+</div>
+<h4 class="font-mono text-white font-semibold text-sm mb-1.5">addHook(name, fn)</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed line-clamp-2">
+                  Appends custom lifecycle interception handler to the active encapsulated scope, propagating downstream to children.
+                </p>
+</div>
+<div class="mt-4 pt-3 border-t border-white/[0.04] flex items-center justify-between font-mono text-[11px] text-outline">
+<span class="text-tertiary">lib/hooks.js:142</span>
+<span>89 References</span>
+</div>
+</div>
+<div class="symbol-card flex flex-col justify-between p-5 bg-[#141720] border border-white/[0.08] rounded-xl hover:border-white/[0.16] transition-all group" data-name="Reply" data-type="class">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="px-2 py-0.5 rounded bg-amber-400/10 text-amber-400 border border-amber-400/20 font-mono text-[10px] uppercase">Class</span>
+<span class="material-symbols-outlined text-outline text-[1.125rem] group-hover:text-primary transition-colors">open_in_new</span>
+</div>
+<h4 class="font-mono text-white font-semibold text-sm mb-1.5">Reply</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed line-clamp-2">
+                  Server response wrapper providing chained header setters, payload streaming, and fast serialization.
+                </p>
+</div>
+<div class="mt-4 pt-3 border-t border-white/[0.04] flex items-center justify-between font-mono text-[11px] text-outline">
+<span class="text-tertiary">lib/reply.js:48</span>
+<span>112 References</span>
+</div>
+</div>
+<div class="symbol-card flex flex-col justify-between p-5 bg-[#141720] border border-white/[0.08] rounded-xl hover:border-white/[0.16] transition-all group" data-name="Request" data-type="class">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="px-2 py-0.5 rounded bg-amber-400/10 text-amber-400 border border-amber-400/20 font-mono text-[10px] uppercase">Class</span>
+<span class="material-symbols-outlined text-outline text-[1.125rem] group-hover:text-primary transition-colors">open_in_new</span>
+</div>
+<h4 class="font-mono text-white font-semibold text-sm mb-1.5">Request</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed line-clamp-2">
+                  Encapsulated incoming payload context encapsulating parsed body, query params, params, and IP resolution.
+                </p>
+</div>
+<div class="mt-4 pt-3 border-t border-white/[0.04] flex items-center justify-between font-mono text-[11px] text-outline">
+<span class="text-tertiary">lib/request.js:31</span>
+<span>94 References</span>
+</div>
+</div>
+<div class="symbol-card flex flex-col justify-between p-5 bg-[#141720] border border-white/[0.08] rounded-xl hover:border-white/[0.16] transition-all group" data-name="onSend" data-type="hook">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="px-2 py-0.5 rounded bg-secondary/10 text-secondary border border-secondary/20 font-mono text-[10px] uppercase">Hook</span>
+<span class="material-symbols-outlined text-outline text-[1.125rem] group-hover:text-primary transition-colors">open_in_new</span>
+</div>
+<h4 class="font-mono text-white font-semibold text-sm mb-1.5">onSend</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed line-clamp-2">
+                  Executed directly prior to payload transmission. Allows mutating or compressing payload payload string before write.
+                </p>
+</div>
+<div class="mt-4 pt-3 border-t border-white/[0.04] flex items-center justify-between font-mono text-[11px] text-outline">
+<span class="text-tertiary">lib/hooks.js:210</span>
+<span>16 References</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- Interactive Modal: Remove Repository Confirmation -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden" id="delete-modal">
+<div class="w-full max-w-md p-6 bg-[#141720] border border-white/[0.1] rounded-2xl shadow-2xl flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="w-10 h-10 rounded-xl bg-error-container/30 border border-error/20 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[1.5rem]">warning</span>
+</div>
+<button class="text-outline hover:text-white p-1 rounded-lg transition-colors cursor-pointer" onclick="closeDeleteModal()">
+<span class="material-symbols-outlined text-[1.25rem]">close</span>
+</button>
+</div>
+<div>
+<h3 class="text-lg font-bold text-white">Remove fastify/fastify?</h3>
+<p class="text-xs text-on-surface-variant mt-1.5 leading-relaxed">
+          This operation will permanently purge all <strong class="text-white">1,420 indexed pgvector embeddings</strong>, extracted AST syntax trees, and historical chat context threads from DevDocs AI.
+        </p>
+</div>
+<div class="p-3 bg-[#0a0d13] rounded-lg font-mono text-xs text-error border border-error/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-[1rem]">database</span>
+<span>Target: vector_space_repo_fastify_v4</span>
+</div>
+<div class="flex items-center justify-end gap-2.5 mt-2">
+<button class="px-4 py-2 rounded-lg bg-[#191c22] hover:bg-[#272a31] text-on-surface font-medium text-xs border border-white/[0.06] transition-colors cursor-pointer" onclick="closeDeleteModal()">
+          Cancel
+        </button>
+<button class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white font-medium text-xs transition-colors shadow-lg shadow-red-600/20 cursor-pointer" onclick="confirmDeletion()">
+          Purge Vector Cache &amp; Delete
+        </button>
+</div>
+</div>
+</div>
+<!-- Micro-Notification Toast -->
+<div class="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#191c22] border border-white/[0.1] text-white shadow-2xl hidden text-xs font-medium" id="toast">
+<span class="material-symbols-outlined text-tertiary" id="toast-icon">check_circle</span>
+<span id="toast-message">Action successful</span>
+</div>
+<script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('bg-[#222530]', 'text-white', 'border', 'border-white/[0.08]');
+        btn.classList.add('text-on-surface-variant');
+      });
+
+      const targetContent = document.getElementById('tab-' + tabId);
+      const targetBtn = document.getElementById('tab-btn-' + tabId);
+
+      if (targetContent) targetContent.classList.remove('hidden');
+      if (targetBtn) {
+        targetBtn.classList.add('bg-[#222530]', 'text-white', 'border', 'border-white/[0.08]');
+        targetBtn.classList.remove('text-on-surface-variant');
+      }
+    }
+
+    const deleteModal = document.getElementById('delete-modal');
+    document.getElementById('btn-open-delete-modal').addEventListener('click', () => {
+      deleteModal.classList.remove('hidden');
+    });
+
+    function closeDeleteModal() {
+      deleteModal.classList.add('hidden');
+    }
+
+    function confirmDeletion() {
+      closeDeleteModal();
+      showToast('Repository indexed records and vectors purged successfully', 'delete');
+    }
+
+    function showToast(msg, iconName = 'check_circle') {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      const toastIcon = document.getElementById('toast-icon');
+
+      toastMsg.textContent = msg;
+      toastIcon.textContent = iconName;
+      toast.classList.remove('hidden');
+
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3500);
+    }
+
+    document.getElementById('btn-refresh-index').addEventListener('click', function() {
+      const icon = document.getElementById('refresh-icon');
+      icon.classList.add('animate-spin');
+      showToast('Re-indexing main branch with evidence preservation...', 'sync');
+      setTimeout(() => {
+        icon.classList.remove('animate-spin');
+        showToast('Index synchronized: 0 changes detected', 'done_all');
+      }, 1800);
+    });
+
+    document.getElementById('btn-export-spec').addEventListener('click', function() {
+      showToast('Exporting AST architectural spec as OpenAPI / JSON...', 'download');
+    });
+
+    document.getElementById('btn-start-chat').addEventListener('click', function() {
+      showToast('Initializing conversational session with Fastify context...', 'chat_bubble');
+    });
+
+    let currentFilterType = 'all';
+
+    function setFilter(type, btnElement) {
+      currentFilterType = type;
+      document.querySelectorAll('.symbol-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-primary', 'text-on-primary');
+        btn.classList.add('bg-[#191c22]', 'text-on-surface-variant', 'border', 'border-white/[0.06]');
+      });
+      btnElement.classList.add('bg-primary', 'text-on-primary');
+      btnElement.classList.remove('bg-[#191c22]', 'text-on-surface-variant', 'border', 'border-white/[0.06]');
+      filterSymbols();
+    }
+
+    function filterSymbols() {
+      const query = (document.getElementById('symbol-search-input').value || '').toLowerCase().trim();
+      const cards = document.querySelectorAll('.symbol-card');
+
+      cards.forEach(card => {
+        const type = card.getAttribute('data-type');
+        const name = (card.getAttribute('data-name') || '').toLowerCase();
+        const matchesType = (currentFilterType === 'all' || type === currentFilterType);
+        const matchesQuery = query === '' || name.includes(query) || card.textContent.toLowerCase().includes(query);
+
+        if (matchesType && matchesQuery) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+</body></html>

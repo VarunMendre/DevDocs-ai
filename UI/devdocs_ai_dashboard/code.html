@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<title>DevDocs AI - Developer Registry</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-error": "#690005",
+            "on-tertiary-fixed-variant": "#005236",
+            "tertiary-container": "#00885d",
+            "outline-variant": "#464554",
+            "surface-container-high": "#272a31",
+            "on-secondary-container": "#002c47",
+            "error": "#ffb4ab",
+            "primary": "#c0c1ff",
+            "tertiary-fixed": "#6ffbbe",
+            "surface-container-lowest": "#0b0e14",
+            "on-secondary-fixed": "#001d31",
+            "on-surface-variant": "#c7c4d7",
+            "surface-tint": "#c0c1ff",
+            "on-primary": "#1000a9",
+            "inverse-primary": "#494bd6",
+            "surface-container-highest": "#32353c",
+            "on-secondary": "#003351",
+            "on-surface": "#e1e2eb",
+            "surface-container-low": "#191c22",
+            "on-primary-fixed": "#07006c",
+            "secondary": "#93ccff",
+            "on-primary-container": "#0d0096",
+            "outline": "#908fa0",
+            "on-primary-fixed-variant": "#2f2ebe",
+            "background": "#10131a",
+            "surface-container": "#1d2026",
+            "on-tertiary": "#003824",
+            "primary-container": "#8083ff",
+            "primary-fixed": "#e1e0ff",
+            "on-tertiary-fixed": "#002113",
+            "inverse-on-surface": "#2e3037",
+            "error-container": "#93000a",
+            "tertiary": "#4edea3",
+            "on-error-container": "#ffdad6",
+            "on-background": "#e1e2eb",
+            "primary-fixed-dim": "#c0c1ff",
+            "secondary-fixed-dim": "#93ccff",
+            "secondary-fixed": "#cce5ff",
+            "on-secondary-fixed-variant": "#004b73",
+            "surface-variant": "#32353c",
+            "on-tertiary-container": "#000703",
+            "inverse-surface": "#e1e2eb",
+            "tertiary-fixed-dim": "#4edea3",
+            "surface-bright": "#363940",
+            "surface-dim": "#10131a",
+            "secondary-container": "#3198dc",
+            "surface": "#10131a"
+          },
+          fontFamily: {
+            sans: ['Geist', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          borderRadius: {
+            'DEFAULT': '0.25rem',
+            'lg': '0.5rem',
+            'xl': '0.75rem',
+            '2xl': '1rem'
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background font-sans text-on-surface antialiased min-h-screen selection:bg-primary/20 selection:text-primary">
+<!-- 1. Navigation & App Chrome (Linear/Vercel Caliber) -->
+<header class="fixed top-0 left-0 right-0 h-14 bg-surface/90 backdrop-blur-xl border-b border-surface-container-high/60 z-50 flex items-center justify-between px-6">
+<div class="flex items-center gap-6">
+<a class="flex items-center gap-2.5 group" href="#">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high border border-outline-variant/30 flex items-center justify-center text-primary group-hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-[1.25rem]">deployed_code</span>
+</div>
+<div class="flex items-baseline">
+<span class="font-semibold text-[15px] tracking-tight text-on-surface">DevDocs</span>
+<span class="text-primary font-mono text-xs ml-1 font-semibold">AI</span>
+</div>
+</a>
+<div class="hidden md:flex items-center gap-2 text-xs font-mono text-outline">
+<span>/</span>
+<span class="text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">workspace</span>
+<span>/</span>
+<span class="text-on-surface font-medium bg-surface-container-low px-2 py-0.5 rounded border border-surface-container-high">production-cluster</span>
+</div>
+</div>
+<!-- Center Search Shortcut -->
+<div class="hidden md:flex items-center flex-1 max-w-md mx-8">
+<button class="w-full flex items-center justify-between h-9 px-3.5 bg-surface-container-low/80 hover:bg-surface-container border border-surface-container-high rounded-lg text-outline text-xs transition-all shadow-sm group">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[1rem] group-hover:text-on-surface transition-colors">search</span>
+<span class="font-sans">Search codebase, AST nodes, or symbol index...</span>
+</div>
+<kbd class="font-mono text-[10px] bg-surface-container-high/80 border border-outline-variant/40 px-1.5 py-0.5 rounded text-on-surface-variant shadow-[0_1px_2px_rgba(0,0,0,0.2)]">⌘K</kbd>
+</button>
+</div>
+<!-- Right Navigation links and Profile -->
+<div class="flex items-center gap-5">
+<nav class="hidden lg:flex items-center gap-1 text-[13px]">
+<a class="px-3 py-1.5 rounded-lg text-on-surface font-medium bg-surface-container-low border border-surface-container-high/60 transition-colors" href="#">Repositories</a>
+<a class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" href="#">Documentation</a>
+<a class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" href="#">API Status</a>
+<a class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors flex items-center gap-1.5" href="#">
+<span>System Health</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</a>
+</nav>
+<div class="h-4 w-px bg-surface-container-high hidden sm:block"></div>
+<div class="flex items-center gap-3">
+<button class="w-8 h-8 rounded-lg bg-surface-container-low hover:bg-surface-container border border-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-[1.125rem]">notifications</span>
+</button>
+<button class="flex items-center gap-2 p-0.5 rounded-lg hover:bg-surface-container transition-colors">
+<img alt="User Avatar" class="w-7 h-7 rounded-md object-cover ring-1 ring-outline-variant/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjHLuv0EtR25PQZF-7YFluA8YkKHdfZ21D92FmD2Ni57BhKQARTdE5fjm2idXl_nvJq9-rk-k2uObCO9MY4KaNnApdusT86UIwYwzZ75x7QZQ6RXCNKU-nn5KMHc6sor62AMfa5vPkpXDDekqj53AZFZZM3JQaK7_pC33-Vxifvphnn94RYfP7BWYEdaMYutAvEROJ2Tld_KcYsq8WW7YMpj1FwTVq9zK3R1u1WA"/>
+<span class="material-symbols-outlined text-outline text-[1rem]">expand_more</span>
+</button>
+</div>
+</div>
+</header>
+<!-- 2. Left Sidebar (Spacious Linear Style) -->
+<aside class="fixed left-0 top-14 bottom-0 w-64 bg-surface-container-lowest border-r border-surface-container-high/60 z-40 flex flex-col justify-between p-4">
+<div class="flex flex-col gap-6">
+<!-- Group 1: WORKSPACE -->
+<div>
+<div class="px-2.5 mb-2.5 flex items-center justify-between">
+<span class="font-mono text-[10px] uppercase font-semibold text-outline tracking-wider">Workspace</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded font-mono text-[9px] bg-tertiary/10 text-tertiary border border-tertiary/20">
+<span class="w-1 h-1 rounded-full bg-tertiary"></span> READY
+          </span>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center justify-between px-3 py-2 rounded-lg bg-surface-container text-on-surface font-medium border border-surface-container-high/80 transition-all shadow-xs" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[1.125rem]">folder_data</span>
+<span class="text-xs">Repositories</span>
+</div>
+<kbd class="font-mono text-[10px] text-outline bg-surface-container-lowest px-1.5 py-0.5 rounded border border-surface-container-high">G R</kbd>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-outline text-[1.125rem]">add_circle</span>
+<span class="text-xs">Add Repository</span>
+</div>
+<kbd class="font-mono text-[10px] text-outline">N</kbd>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-outline text-[1.125rem]">account_tree</span>
+<span class="text-xs">Repository Overview</span>
+</div>
+<kbd class="font-mono text-[10px] text-outline">O</kbd>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-outline text-[1.125rem]">chat_bubble</span>
+<span class="text-xs">Repository Chat</span>
+</div>
+<kbd class="font-mono text-[10px] text-outline">C</kbd>
+</a>
+</nav>
+</div>
+<!-- Group 2: OBSERVABILITY -->
+<div>
+<div class="px-2.5 mb-2.5 flex items-center justify-between">
+<span class="font-mono text-[10px] uppercase font-semibold text-outline tracking-wider">Observability</span>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-outline text-[1.125rem]">insights</span>
+<span class="text-xs">Ingestion Health</span>
+</div>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-outline text-[1.125rem]">tune</span>
+<span class="text-xs">Parser Config</span>
+</div>
+</a>
+</nav>
+</div>
+</div>
+<!-- Sidebar Bottom Status Footer -->
+<div class="p-3.5 bg-surface-container-low border border-surface-container-high/60 rounded-xl flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-mono text-[10px] text-outline font-semibold">AST ENGINE</span>
+<span class="font-mono text-[10px] text-tertiary font-medium bg-tertiary/10 px-1.5 py-0.5 rounded">v4.1.2</span>
+</div>
+<p class="text-[11px] text-on-surface-variant leading-snug">Cluster synchronized with local Git branch heads.</p>
+</div>
+</aside>
+<!-- Main Workspace Area -->
+<div class="pl-64 pt-14 min-h-screen">
+<main class="max-w-[1580px] mx-auto px-8 py-8 flex flex-col gap-8">
+<!-- 3. Spacious Page Header & Metrics Bar -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-2 border-b border-surface-container-high/40">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-mono text-[11px] text-tertiary uppercase tracking-wider font-semibold">Active Node: US-East-1</span>
+<span class="text-outline text-xs">•</span>
+<span class="font-mono text-[11px] text-outline">Telemetry Active</span>
+</div>
+<div class="flex items-baseline gap-3 flex-wrap">
+<h1 class="text-2xl lg:text-3xl font-bold tracking-tight text-on-surface">Developer Registry</h1>
+<span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-surface-container-high text-primary border border-surface-container-highest">
+              4 Active Repositories
+            </span>
+</div>
+<p class="text-sm text-on-surface-variant max-w-2xl mt-0.5">
+            Semantic AST indexes and vector embeddings ready for neural context retrieval. Synchronized against origin Git trees.
+          </p>
+</div>
+<!-- Quota & Action Button -->
+<div class="flex items-center gap-4 flex-wrap">
+<div class="flex items-center gap-3.5 bg-surface-container-low border border-surface-container-high/80 px-4 py-2.5 rounded-xl shadow-xs">
+<div class="relative w-9 h-9 flex items-center justify-center">
+<svg class="w-9 h-9 -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-highest stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3.5"></path>
+<path class="text-primary stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="40, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute font-mono text-[10px] font-bold text-on-surface">40%</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-mono text-xs text-on-surface font-semibold">4 / 10 Repos</span>
+<span class="font-mono text-[9px] px-1.5 py-0.5 bg-primary/10 text-primary border border-primary/20 rounded font-semibold">TIER PRO</span>
+</div>
+<span class="text-xs text-outline">6 slot allocations remaining</span>
+</div>
+</div>
+<button class="h-10 px-4 bg-primary hover:bg-primary-container text-on-primary font-medium text-xs rounded-lg shadow-sm transition-all flex items-center gap-2 active:scale-95 group">
+<span class="material-symbols-outlined text-[1.125rem] group-hover:rotate-90 transition-transform">add</span>
+<span>+ Add Public Repository</span>
+</button>
+</div>
+</div>
+<!-- Filter and Search Header Bar with generous inputs -->
+<div class="bg-surface-container-low/70 border border-surface-container-high/60 p-2.5 rounded-xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+<!-- Filter Pills -->
+<div class="flex items-center gap-1.5 overflow-x-auto" id="filter-group">
+<button class="filter-tab active-tab h-9 px-3.5 rounded-lg text-xs font-medium transition-all flex items-center gap-2 bg-surface-container-high text-on-surface border border-outline-variant/40 shadow-xs" data-filter="all" onclick="filterRepos('all')">
+<span>All</span>
+<span class="font-mono text-[10px] px-1.5 py-0.2 rounded bg-surface-container-lowest text-primary font-semibold">4</span>
+</button>
+<button class="filter-tab h-9 px-3.5 rounded-lg text-xs font-medium transition-all flex items-center gap-2 text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-filter="ready" onclick="filterRepos('ready')">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span>Ready</span>
+<span class="font-mono text-[10px] px-1.5 py-0.2 rounded bg-surface-container-lowest text-outline">2</span>
+</button>
+<button class="filter-tab h-9 px-3.5 rounded-lg text-xs font-medium transition-all flex items-center gap-2 text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-filter="partial" onclick="filterRepos('partial')">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+<span>Partially Ready</span>
+<span class="font-mono text-[10px] px-1.5 py-0.2 rounded bg-surface-container-lowest text-outline">1</span>
+</button>
+<button class="filter-tab h-9 px-3.5 rounded-lg text-xs font-medium transition-all flex items-center gap-2 text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-filter="failed" onclick="filterRepos('failed')">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<span>Attention</span>
+<span class="font-mono text-[10px] px-1.5 py-0.2 rounded bg-surface-container-lowest text-outline">1</span>
+</button>
+</div>
+<!-- Generous Search Input (h-10, px-4) -->
+<div class="flex items-center gap-2.5 flex-1 max-w-md justify-end">
+<div class="relative w-full flex items-center bg-surface-container-lowest border border-surface-container-high/80 rounded-lg px-3.5 h-10 shadow-inner">
+<span class="material-symbols-outlined text-outline text-[1.125rem] mr-2">search</span>
+<input class="w-full bg-transparent font-mono text-xs text-on-surface placeholder:text-outline focus:outline-none" id="repo-search" oninput="searchRepos(this.value)" placeholder="Filter by slug, commit SHA, or tag..." type="text"/>
+<kbd class="font-mono text-[9px] bg-surface-container-high px-1.5 py-0.5 rounded text-outline border border-outline-variant/30">ESC</kbd>
+</div>
+<div class="hidden sm:flex items-center p-1 bg-surface-container-lowest border border-surface-container-high/80 rounded-lg">
+<button class="p-1 rounded bg-surface-container-high text-on-surface shadow-xs" title="Grid Layout">
+<span class="material-symbols-outlined text-[1rem]">grid_view</span>
+</button>
+<button class="p-1 rounded text-outline hover:text-on-surface" title="List Layout">
+<span class="material-symbols-outlined text-[1rem]">view_agenda</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Main Cockpit Split Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+<!-- 4. Repository Cards (8 Columns) - Wide, Readable, p-6 -->
+<div class="xl:col-span-8 flex flex-col gap-5" id="repo-cards-container">
+<!-- Repo 1: fastify/fastify (Ready) -->
+<div class="repo-card bg-surface-container-low hover:bg-surface-container/70 border border-surface-container-high/70 hover:border-outline-variant/50 p-6 rounded-xl transition-all duration-150 shadow-xs" data-slug="fastify/fastify" data-status="ready">
+<div class="flex flex-col gap-5">
+<!-- Top Row: Title, Badges, Status -->
+<div class="flex flex-wrap items-start justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="w-11 h-11 rounded-lg bg-surface-container-high border border-surface-container-highest flex items-center justify-center text-primary shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-[1.5rem]">terminal</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2.5 flex-wrap">
+<a class="text-base font-semibold text-on-surface hover:text-primary transition-colors" href="#">fastify/fastify</a>
+<span class="font-mono text-[10px] px-2 py-0.5 bg-surface-container-highest text-on-surface-variant rounded border border-surface-container-highest">public</span>
+<div class="flex items-center gap-1.5 font-mono text-xs text-outline">
+<span>Pinned:</span>
+<span class="text-primary bg-surface-container-lowest px-1.5 py-0.5 rounded border border-surface-container-high font-medium">#7b4a2e1</span>
+</div>
+</div>
+<span class="text-xs text-on-surface-variant font-mono">JavaScript / TypeScript AST</span>
+</div>
+</div>
+<!-- Clean Status Pill -->
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary/10 border border-tertiary/20 text-tertiary font-mono text-xs font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+<span>Ready</span>
+</div>
+</div>
+<!-- Metadata Metrics in Clear Columns with Comfortable Spacing -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-surface-container-lowest/80 border border-surface-container-high/50 rounded-lg">
+<div class="flex flex-col gap-1">
+<span class="font-mono text-[10px] text-outline uppercase tracking-wider">Indexed Chunks</span>
+<span class="text-sm font-semibold text-on-surface">1,420 AST nodes</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-mono text-[10px] text-outline uppercase tracking-wider">Conversations</span>
+<span class="text-sm font-semibold text-on-surface">18 Sessions</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-mono text-[10px] text-outline uppercase tracking-wider">Last Retrieval</span>
+<span class="text-sm font-semibold text-tertiary">12m ago</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-mono text-[10px] text-outline uppercase tracking-wider">Parser Vector</span>
+<span class="text-sm font-semibold text-on-surface">Complete (100%)</span>
+</div>
+</div>
+<!-- Bottom Actions with Min Height 38px -->
+<div class="flex items-center justify-between pt-1 border-t border-surface-container-high/40">
+<div class="flex items-center gap-1.5 font-mono text-xs text-outline">
+<span class="material-symbols-outlined text-[1rem]">sync</span>
+<span>Head matches main branch</span>
+</div>
+<div class="flex items-center gap-2.5">
+<button class="min-h-[38px] px-3.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface text-xs font-medium border border-surface-container-highest transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[1rem]">account_tree</span>
+<span>View Overview</span>
+</button>
+<button class="min-h-[38px] px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary text-xs font-medium transition-colors flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[1rem]">chat_bubble</span>
+<span>Open Chat</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Repo 2: trpc/trpc (Ready) -->
+<div class="repo-card bg-surface-container-low hover:bg-surface-container/70 border border-surface-container-high/70 hover:border-outline-variant/50 p-6 rounded-xl transition-all duration-150 shadow-xs" data-slug="trpc/trpc" data-status="ready">
+<div class="flex flex-col gap-5">
+<!-- Top Row -->
+<div class="flex flex-wrap items-start justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="w-11 h-11 rounded-lg bg-surface-container-high border border-surface-container-highest flex items-center justify-center text-primary shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-[1.5rem]">hub</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2.5 flex-wrap">
+<a class="text-base font-semibold text-on-surface hover:text-primary transition-colors" href="#">trpc/trpc</a>
+<span class="font-mono text-[10px] px-2 py-0.5 bg-surface-container-highest text-on-surface-variant rounded border border-surface-container-highest">public</span>
+<div class="flex items-center gap-1.5 font-mono text-xs text-outline">
+<span>Pinned:</span>
+<span class="text-primary bg-surface-container-lowest px-1.5 py-0.5 rounded border border-surface-container-high font-medium">#e491c0f</span>
+</div>
+</div>
+<span class="text-xs text-on-surface-variant font-mono">TypeScript 5.x Typings Parsed</span>
+</div>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary/10 border border-tertiary/20 text-tertiary font-mono text-xs font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+<span>Ready</span>
+</div>
+</div>
+<!-- Metadata Metrics -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-surface-container-lowest/80 border border-surface-container-high/50 rounded-lg">
+<div class="flex flex-col gap-1">
+<span class="font-mono text-[10px] text-outline uppercase tracking-wider">Indexed Chunks</span>
+<span class="text-sm font-semibold text-on-surface">2,890 AST nodes</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-mono text-[10px] text-outline uppercase tracking-wider">Conversations</span>
+<span class="text-sm font-semibold text-on-surface">7 Sessions</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-mono text-[10px] text-outline uppercase tracking-wider">Last Retrieval</span>
+<span class="text-sm font-semibold text-on-surface-variant">4h ago</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-mono text-[10px] text-outline uppercase tracking-wider">Type Resolution</span>
+<span class="text-sm font-semibold text-tertiary">99.4% Valid</span>
+</div>
+</div>
+<!-- Bottom Actions -->
+<div class="flex items-center justify-between pt-1 border-t border-surface-container-high/40">
+<div class="flex items-center gap-1.5 font-mono text-xs text-outline">
+<span class="material-symbols-outlined text-[1rem]">verified</span>
+<span>Full cross-file dependency graph active</span>
+</div>
+<div class="flex items-center gap-2.5">
+<button class="min-h-[38px] px-3.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface text-xs font-medium border border-surface-container-highest transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[1rem]">tune</span>
+<span>Config</span>
+</button>
+<button class="min-h-[38px] px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary text-xs font-medium transition-colors flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[1rem]">chat_bubble</span>
+<span>Open Chat</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Repo 3: facebook/react (Partially Ready Warning) -->
+<div class="repo-card bg-surface-container-low hover:bg-surface-container/70 border border-surface-container-high/70 hover:border-outline-variant/50 p-6 rounded-xl transition-all duration-150 shadow-xs" data-slug="facebook/react" data-status="partial">
+<div class="flex flex-col gap-5">
+<!-- Top Row -->
+<div class="flex flex-wrap items-start justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="w-11 h-11 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-[1.5rem]">data_object</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2.5 flex-wrap">
+<a class="text-base font-semibold text-on-surface hover:text-amber-400 transition-colors" href="#">facebook/react</a>
+<span class="font-mono text-[10px] px-2 py-0.5 bg-surface-container-highest text-on-surface-variant rounded border border-surface-container-highest">public</span>
+<div class="flex items-center gap-1.5 font-mono text-xs text-outline">
+<span>Pinned:</span>
+<span class="text-primary bg-surface-container-lowest px-1.5 py-0.5 rounded border border-surface-container-high font-medium">#f9184a2</span>
+</div>
+</div>
+<span class="text-xs text-on-surface-variant font-mono">Flow / JSX AST Engine</span>
+</div>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-400 font-mono text-xs font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+<span>Partially Ready</span>
+</div>
+</div>
+<!-- Warning Banner with Balanced Amber Palette -->
+<div class="p-3.5 bg-amber-950/20 border border-amber-500/30 rounded-lg flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-amber-400 text-xs font-semibold">
+<span class="material-symbols-outlined text-[1.125rem]">warning</span>
+<span>Partially Ready • 38 large blobs skipped (&gt;2MB)</span>
+</div>
+<span class="font-mono text-xs text-amber-400 font-medium">92.6% coverage</span>
+</div>
+<!-- Progress bar showing 92.6% coverage -->
+<div class="w-full bg-surface-container-lowest rounded-full h-1.5 overflow-hidden">
+<div class="bg-amber-400 h-full rounded-full" style="width: 92.6%"></div>
+</div>
+<p class="text-xs text-on-surface-variant">Core packages are indexed and ready for queries. Bundled fixtures and compiler tests were bypassed due to payload limit.</p>
+</div>
+<!-- Metrics -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-surface-container-lowest/80 border border-surface-container-high/50 rounded-lg">
+<div class="flex flex-col gap-1">
+<span class="font-mono text-[10px] text-outline uppercase tracking-wider">Indexed Chunks</span>
+<span class="text-sm font-semibold text-on-surface">12,400 AST nodes</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-mono text-[10px] text-outline uppercase tracking-wider">Skipped Blobs</span>
+<span class="text-sm font-semibold text-amber-400">38 Files</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-mono text-[10px] text-outline uppercase tracking-wider">Coverage</span>
+<span class="text-sm font-semibold text-on-surface">92.6% parsed</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-mono text-[10px] text-outline uppercase tracking-wider">Status</span>
+<span class="text-sm font-semibold text-amber-400">Queryable</span>
+</div>
+</div>
+<!-- Bottom Actions -->
+<div class="flex items-center justify-between pt-1 border-t border-surface-container-high/40">
+<div class="flex items-center gap-1.5 font-mono text-xs text-outline">
+<span class="material-symbols-outlined text-[1rem]">tune</span>
+<span>Tune file limit size in system settings</span>
+</div>
+<div class="flex items-center gap-2.5">
+<button class="min-h-[38px] px-3.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-amber-300 text-xs font-medium border border-surface-container-highest transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[1rem]">format_list_bulleted</span>
+<span>Review Skipped Files</span>
+</button>
+<button class="min-h-[38px] px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary text-xs font-medium transition-colors flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[1rem]">chat_bubble</span>
+<span>Open Chat</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Repo 4: tailwindlabs/tailwindcss (Attention / Rate-Limited) -->
+<div class="repo-card bg-surface-container-low hover:bg-surface-container/70 border border-error/30 p-6 rounded-xl transition-all duration-150 shadow-xs" data-slug="tailwindlabs/tailwindcss" data-status="failed">
+<div class="flex flex-col gap-5">
+<!-- Top Row -->
+<div class="flex flex-wrap items-start justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="w-11 h-11 rounded-lg bg-error-container/30 border border-error/30 flex items-center justify-center text-error shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-[1.5rem]">sync_problem</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2.5 flex-wrap">
+<a class="text-base font-semibold text-on-surface hover:text-error transition-colors" href="#">tailwindlabs/tailwindcss</a>
+<span class="font-mono text-[10px] px-2 py-0.5 bg-surface-container-highest text-on-surface-variant rounded border border-surface-container-highest">public</span>
+<div class="flex items-center gap-1.5 font-mono text-xs text-error">
+<span>Status:</span>
+<span class="font-semibold">Paused at commit-walk</span>
+</div>
+</div>
+<span class="text-xs text-on-surface-variant font-mono">Tree Sitter Ingestion</span>
+</div>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container/30 border border-error/40 text-error font-mono text-xs font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-ping"></span>
+<span>Attention Required</span>
+</div>
+</div>
+<!-- Alert Card with Countdown Timer -->
+<div class="p-4 bg-error-container/20 border border-error/30 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[1.25rem] text-error mt-0.5">error</span>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-error">GitHub secondary rate limit encountered</span>
+<span class="text-xs text-on-surface-variant">The repository parser was paused during AST blob extraction. GitHub API token reset in progress.</span>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-lowest px-3 py-1.5 rounded border border-error/30 font-mono text-xs text-error shrink-0">
+<span class="material-symbols-outlined text-[1rem]">timer</span>
+<span>14m remaining</span>
+</div>
+</div>
+<!-- Diagnostics Row -->
+<div class="flex flex-wrap items-center justify-between gap-3 p-3.5 bg-surface-container-lowest/80 border border-surface-container-high/50 rounded-lg text-xs font-mono">
+<div class="flex items-center gap-3 text-outline">
+<span>Processed: <strong class="text-on-surface font-semibold">432 / 1,890 files</strong></span>
+<span>•</span>
+<span>Backoff: <strong class="text-on-surface font-semibold">Automatic retry active</strong></span>
+</div>
+<div class="flex items-center gap-1.5 text-error">
+<span class="material-symbols-outlined text-[1rem]">info</span>
+<span>Code 403: API_QUOTA_EXCEEDED</span>
+</div>
+</div>
+<!-- Bottom Actions with Non-Cramped Retry Button -->
+<div class="flex items-center justify-between pt-1 border-t border-surface-container-high/40">
+<div class="flex items-center gap-1.5 font-mono text-xs text-outline">
+<span class="material-symbols-outlined text-[1rem]">key</span>
+<span>Attach custom PAT to bypass GitHub limits</span>
+</div>
+<div class="flex items-center gap-2.5">
+<button class="min-h-[38px] px-3.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface text-xs font-medium border border-surface-container-highest transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[1rem]">bug_report</span>
+<span>View Diagnostics</span>
+</button>
+<button class="min-h-[38px] px-4 rounded-lg bg-error hover:bg-error/90 text-on-error text-xs font-semibold transition-colors flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[1rem]">replay</span>
+<span>Retry Indexing</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 5. Right Rail / Widgets (4 Columns) -->
+<div class="xl:col-span-4 flex flex-col gap-6">
+<!-- Widget 1: Cluster Resource Budgets -->
+<div class="bg-surface-container-low border border-surface-container-high/70 p-6 rounded-xl flex flex-col gap-5 shadow-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[1.25rem]">memory</span>
+</div>
+<h2 class="text-sm font-semibold text-on-surface">Cluster Resource Budgets</h2>
+</div>
+<span class="font-mono text-[10px] px-2 py-0.5 bg-tertiary/10 text-tertiary border border-tertiary/20 rounded font-semibold">HEALTHY</span>
+</div>
+<!-- Token Consumption -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center text-xs">
+<span class="text-on-surface-variant">Monthly Token Quota</span>
+<span class="font-mono font-semibold text-on-surface">4.82M / 10M (48%)</span>
+</div>
+<div class="w-full h-2 bg-surface-container-lowest rounded-full overflow-hidden border border-surface-container-high/40">
+<div class="bg-primary h-full rounded-full" style="width: 48.2%"></div>
+</div>
+<span class="text-[11px] text-outline">Reset cycle in 18 days • Claude 3.5 &amp; GPT-4o Mix</span>
+</div>
+<!-- Vector Storage -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center text-xs">
+<span class="text-on-surface-variant">AST Vector Storage</span>
+<span class="font-mono font-semibold text-on-surface">16,710 / 50k Chunks</span>
+</div>
+<div class="w-full h-2 bg-surface-container-lowest rounded-full overflow-hidden border border-surface-container-high/40">
+<div class="bg-tertiary h-full rounded-full" style="width: 33.4%"></div>
+</div>
+<span class="text-[11px] text-outline">HNSW Index size: 218 MB memory allocated</span>
+</div>
+<!-- Real-time Retrieval Latency Sparkline -->
+<div class="p-4 bg-surface-container-lowest border border-surface-container-high/50 rounded-lg flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<span class="font-mono text-[10px] text-outline uppercase tracking-wider font-medium">Retrieval Latency (P99)</span>
+<span class="font-mono text-xs text-tertiary font-bold">&lt;142ms</span>
+</div>
+<svg class="w-full h-9 text-primary overflow-visible" preserveaspectratio="none" viewbox="0 0 100 25">
+<path d="M0 18 L10 16 L20 20 L30 14 L40 15 L50 8 L60 12 L70 9 L80 15 L90 5 L100 8" fill="none" stroke="currentColor" stroke-width="1.75"></path>
+<path d="M0 18 L10 16 L20 20 L30 14 L40 15 L50 8 L60 12 L70 9 L80 15 L90 5 L100 8 L100 25 L0 25 Z" fill="currentColor" fill-opacity="0.12"></path>
+</svg>
+<div class="flex justify-between font-mono text-[10px] text-outline">
+<span>24h ago</span>
+<span>Current Realtime</span>
+</div>
+</div>
+</div>
+<!-- Widget 2: Recent Activity Timeline -->
+<div class="bg-surface-container-low border border-surface-container-high/70 p-6 rounded-xl flex flex-col gap-4 shadow-xs">
+<div class="flex items-center justify-between pb-1 border-b border-surface-container-high/40">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[1.25rem]">history_edu</span>
+<h2 class="text-sm font-semibold text-on-surface">Recent Activity</h2>
+</div>
+<a class="font-mono text-[11px] text-primary hover:underline" href="#">View Log</a>
+</div>
+<div class="flex flex-col gap-4 pt-1">
+<!-- Item 1 -->
+<div class="flex gap-3 items-start">
+<div class="w-7 h-7 rounded-lg bg-surface-container-high border border-surface-container-highest flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[1rem]">question_answer</span>
+</div>
+<div class="flex flex-col gap-1.5 min-w-0 flex-1">
+<span class="text-xs font-medium text-on-surface truncate">"How does Fastify handle encapsulation in plugins?"</span>
+<div class="flex items-center gap-2 font-mono text-[11px] text-outline">
+<span class="text-tertiary">fastify/fastify</span>
+<span>•</span>
+<span>12m ago</span>
+</div>
+<div class="p-2 bg-surface-container-lowest border border-surface-container-high/50 rounded font-mono text-[11px] text-on-surface-variant flex items-center justify-between">
+<span class="truncate">Cited: lib/pluginUtils.js:144</span>
+<span class="material-symbols-outlined text-[0.875rem] text-tertiary ml-2 shrink-0">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-3 items-start">
+<div class="w-7 h-7 rounded-lg bg-surface-container-high border border-surface-container-highest flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[1rem]">call_split</span>
+</div>
+<div class="flex flex-col gap-1.5 min-w-0 flex-1">
+<span class="text-xs font-medium text-on-surface truncate">"Show inferred return type for createCallerFactory"</span>
+<div class="flex items-center gap-2 font-mono text-[11px] text-outline">
+<span class="text-tertiary">trpc/trpc</span>
+<span>•</span>
+<span>4h ago</span>
+</div>
+<div class="p-2 bg-surface-container-lowest border border-surface-container-high/50 rounded font-mono text-[11px] text-on-surface-variant flex items-center justify-between">
+<span class="truncate">Cited: packages/server/src/core/caller.ts</span>
+<span class="material-symbols-outlined text-[0.875rem] text-tertiary ml-2 shrink-0">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex gap-3 items-start">
+<div class="w-7 h-7 rounded-lg bg-surface-container-high border border-surface-container-highest flex items-center justify-center text-amber-400 shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[1rem]">alt_route</span>
+</div>
+<div class="flex flex-col gap-1.5 min-w-0 flex-1">
+<span class="text-xs font-medium text-on-surface truncate">"Explain Scheduler priority queue loop in React fiber"</span>
+<div class="flex items-center gap-2 font-mono text-[11px] text-outline">
+<span class="text-amber-400">facebook/react</span>
+<span>•</span>
+<span>Yesterday</span>
+</div>
+<div class="p-2 bg-surface-container-lowest border border-surface-container-high/50 rounded font-mono text-[11px] text-on-surface-variant flex items-center justify-between">
+<span class="truncate">Cited: SchedulerMinHeap.js:28</span>
+<span class="material-symbols-outlined text-[0.875rem] text-tertiary ml-2 shrink-0">check_circle</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Widget 3: AST Engine Pro Tip -->
+<div class="p-5 bg-gradient-to-br from-surface-container-high via-surface-container to-surface-container-low border border-surface-container-highest rounded-xl flex flex-col gap-2.5 shadow-xs">
+<div class="flex items-center justify-between">
+<span class="font-mono text-[10px] text-primary tracking-wider uppercase font-semibold">AST Engine Tip</span>
+<span class="material-symbols-outlined text-primary text-[1.125rem]">tips_and_updates</span>
+</div>
+<p class="text-xs text-on-surface leading-relaxed">
+              Indexing monorepos? Use custom <code class="font-mono text-primary bg-surface-container-lowest px-1 py-0.5 rounded text-[11px]">devdocs.config.json</code> to exclude high-churn snapshot fixtures and lockfiles for 3x faster vector sync.
+            </p>
+<a class="text-xs font-medium text-primary hover:underline flex items-center gap-1 pt-1" href="#">
+<span>Read AST configuration specs</span>
+<span class="material-symbols-outlined text-[0.875rem]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Interactive Search & Filter JS -->
+<script>
+    function filterRepos(type) {
+      const cards = document.querySelectorAll('.repo-card');
+      const tabs = document.querySelectorAll('.filter-tab');
+      
+      tabs.forEach(tab => {
+        if (tab.getAttribute('data-filter') === type) {
+          tab.className = "filter-tab active-tab h-9 px-3.5 rounded-lg text-xs font-medium transition-all flex items-center gap-2 bg-surface-container-high text-on-surface border border-outline-variant/40 shadow-xs";
+        } else {
+          tab.className = "filter-tab h-9 px-3.5 rounded-lg text-xs font-medium transition-all flex items-center gap-2 text-on-surface-variant hover:bg-surface-container hover:text-on-surface";
+        }
+      });
+
+      cards.forEach(card => {
+        const status = card.getAttribute('data-status');
+        if (type === 'all') {
+          card.style.display = 'block';
+        } else if (type === status) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function searchRepos(query) {
+      const cleanQuery = query.toLowerCase().trim();
+      const cards = document.querySelectorAll('.repo-card');
+      
+      cards.forEach(card => {
+        const slug = card.getAttribute('data-slug').toLowerCase();
+        const text = card.textContent.toLowerCase();
+        if (!cleanQuery || slug.includes(cleanQuery) || text.includes(cleanQuery)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const search = document.getElementById('repo-search');
+        if (search && document.activeElement === search) {
+          search.value = '';
+          searchRepos('');
+          search.blur();
+        }
+      }
+    });
+  </script>
+</body></html>
