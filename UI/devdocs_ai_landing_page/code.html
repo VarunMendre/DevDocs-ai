@@ -1,564 +1,1020 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary-fixed-dim":"#ffb95f","on-secondary-fixed":"#002113","inverse-primary":"#494bd6","on-secondary-container":"#00311f","inverse-on-surface":"#2c303a","primary-container":"#8083ff","secondary-container":"#00a572","primary":"#c0c1ff","surface":"#0f131c","on-secondary":"#003824","outline":"#908fa0","on-error":"#690005","tertiary-fixed":"#ffddb8","surface-dim":"#0f131c","error-container":"#93000a","primary-fixed-dim":"#c0c1ff","tertiary-container":"#ca8100","on-secondary-fixed-variant":"#005236","primary-fixed":"#e1e0ff","on-tertiary-container":"#3e2400","on-primary-fixed-variant":"#2f2ebe","on-tertiary-fixed":"#2a1700","tertiary":"#ffb95f","on-primary":"#1000a9","surface-tint":"#c0c1ff","on-background":"#dfe2ef","on-surface-variant":"#c7c4d7","on-tertiary":"#472a00","on-tertiary-fixed-variant":"#653e00","secondary":"#4edea3","error":"#ffb4ab","on-surface":"#dfe2ef","surface-container-highest":"#31353f","outline-variant":"#464554","secondary-fixed":"#6ffbbe","on-primary-container":"#0d0096","surface-container-low":"#181b25","surface-container-high":"#262a34","surface-bright":"#353943","inverse-surface":"#dfe2ef","surface-container":"#1c1f29","on-error-container":"#ffdad6","secondary-fixed-dim":"#4edea3","surface-container-lowest":"#0a0e17","surface-variant":"#31353f","on-primary-fixed":"#07006c","background":"#0f131c"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-2xl":"2rem","gutter-desktop":"1.5rem","space-base":"1rem","space-xl":"1.5rem","margin":"1rem","space-sm":"0.5rem","margin-desktop":"2rem","space-2xs":"0.125rem","space-xs":"0.25rem","gutter":"1rem","space-lg":"1.25rem","space-md":"0.75rem","space-3xl":"3rem"},"fontFamily":{"label-md":["Geist"],"label-caps":["JetBrains Mono"],"headline-sm":["Geist"],"headline-lg":["Geist"],"body-sm":["Geist"],"body-lg":["Geist"],"code-block":["JetBrains Mono"],"label-sm":["JetBrains Mono"],"headline-md":["Geist"],"code-inline":["JetBrains Mono"],"headline-xl":["Geist"],"body-md":["Geist"],"display":["Geist"],"display-mobile":["Geist"]},"fontSize":{"label-md":["0.8125rem",{"lineHeight":"1.2","letterSpacing":"0em","fontWeight":"500"}],"label-caps":["0.6875rem",{"lineHeight":"1","letterSpacing":"0.06em","fontWeight":"500"}],"headline-sm":["1rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-lg":["1.75rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"600"}],"body-sm":["0.75rem",{"lineHeight":"1.5","letterSpacing":"0em","fontWeight":"400"}],"body-lg":["1rem",{"lineHeight":"1.5","letterSpacing":"-0.01em","fontWeight":"400"}],"code-block":["0.8125rem",{"lineHeight":"1.6","letterSpacing":"0em","fontWeight":"400"}],"label-sm":["0.75rem",{"lineHeight":"1.2","letterSpacing":"0.02em","fontWeight":"500"}],"headline-md":["1.25rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"500"}],"code-inline":["0.8125rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-xl":["2.25rem",{"lineHeight":"1.2","letterSpacing":"-0.025em","fontWeight":"600"}],"body-md":["0.875rem",{"lineHeight":"1.5","letterSpacing":"-0.005em","fontWeight":"400"}],"display":["3.5rem",{"lineHeight":"1.1","letterSpacing":"-0.035em","fontWeight":"600"}],"display-mobile":["2.25rem",{"lineHeight":"1.2","letterSpacing":"-0.025em","fontWeight":"600"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-14 w-full px-space-gutter-desktop flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="DevDocs AI Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W7FoOzIg-FT9Xma1EW2ryYI3hJLwrXIn6B03OJZ2B9Ez8KB9aTbUMKQBQJxT6a2WPMZXmISAjhOoJ98r3QluLriLJIaxk2O7MW2LWXb3xScL1qG0lfQ-enXdv-O5QjLUzMaRV4KSpoh7yEMjje4VwTw0P-O7rIqLvPSGS0tdNZFM1YjG03Co2_ur4a8Idp_NPx1RvB_3cEKm09PBrB9_ZlfJSeujSfzQ76ZMjEhw"/><span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">DevDocs<span class="text-primary ml-space-2xs">AI</span></span></div><nav class="hidden md:flex items-center gap-space-lg" data-active-classes="text-on-surface font-semibold"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="repositories" href="#">Repositories</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="documentation" href="#">Documentation</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="api-status" href="#">API Status</a></nav><div class="flex items-center gap-space-md"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjHLuv0EtR25PQZF-7YFluA8YkKHdfZ21D92FmD2Ni57BhKQARTdE5fjm2idXl_nvJq9-rk-k2uObCO9MY4KaNnApdusT86UIwYwzZ75x7QZQ6RXCNKU-nn5KMHc6sor62AMfa5vPkpXDDekqj53AZFZZM3JQaK7_pC33-Vxifvphnn94RYfP7BWYEdaMYutAvEROJ2Tld_KcYsq8WW7YMpj1FwTVq9zK3R1u1WA"/></div></div></header><main class="w-full pt-14 bg-surface px-space-gutter-desktop min-h-screen"><div class="flex flex-col w-full">
-<!-- Subtle Ambient Glow Orbs -->
-<div class="relative w-full overflow-hidden">
-<div class="absolute top-12 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-primary/10 blur-[130px] rounded-full pointer-events-none -z-10"></div>
-<div class="absolute top-96 left-1/4 w-[380px] h-[240px] bg-secondary/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
-<!-- Hero Section -->
-<section class="w-full pt-12 pb-20 flex flex-col items-center text-center">
-<!-- Release / AST Verified Eyebrow Pill -->
-<div class="inline-flex items-center gap-space-sm px-space-md py-space-xs bg-surface-container-low rounded-full shadow-sm mb-space-xl">
-<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-<span class="font-label-caps text-label-caps text-secondary font-medium tracking-wider">HYBRID AST v3.4 LIVE</span>
-<span class="text-outline-variant text-body-sm font-label-caps">•</span>
-<span class="font-label-caps text-label-caps text-on-surface-variant">Deterministic Commit Pinning</span>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DevDocs AI — Deterministic Codebase Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Geist", "sans-serif"],
+            mono: ["Geist Mono", "monospace"],
+          },
+          transitionTimingFunction: {
+            brand: "cubic-bezier(0.22, 1, 0.36, 1)",
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      font-family: 'Geist', sans-serif;
+      overscroll-behavior: none;
+      background-color: #000000;
+      color: #DFE2EF;
+    }
+    .hero-title-gradient {
+      background: linear-gradient(180deg, #FFFFFF 0%, #9B9B9B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .text-balance {
+      text-wrap: balance;
+    }
+    .text-pretty {
+      text-wrap: pretty;
+    }
+    .reveal-word {
+      transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), color 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    /* Section scroll entrance animations */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Terminal Line Interactive Glow Classes */
+    .line-interactive {
+      transition: background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .line-glow-primary {
+      background-color: rgba(192, 193, 255, 0.18) !important;
+      border-color: rgba(192, 193, 255, 0.7) !important;
+      box-shadow: 0 0 16px rgba(192, 193, 255, 0.25);
+    }
+    .line-glow-secondary {
+      background-color: rgba(78, 222, 163, 0.18) !important;
+      border-color: rgba(78, 222, 163, 0.7) !important;
+      box-shadow: 0 0 16px rgba(78, 222, 163, 0.25);
+    }
+
+    /* Terminal blinking cursor */
+    @keyframes cursor-blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .cursor-blinking {
+      display: inline-block;
+      width: 2px;
+      height: 12px;
+      vertical-align: middle;
+      background-color: #C0C1FF;
+      margin-left: 2px;
+      animation: cursor-blink 1s steps(2, start) infinite;
+    }
+
+    /* FAQ accordion transitions */
+    .faq-answer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+    .faq-answer.faq-open {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+    .faq-chevron {
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .faq-chevron.faq-rotated {
+      transform: rotate(180deg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-word {
+        opacity: 1 !important;
+        color: #FFFFFF !important;
+        transition: none !important;
+      }
+      .reveal-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .cursor-blinking {
+        animation: none !important;
+        opacity: 1 !important;
+      }
+      .faq-answer {
+        transition: none !important;
+      }
+      .faq-chevron {
+        transition: none !important;
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-[#000000] text-[#DFE2EF] antialiased selection:bg-[#313131] selection:text-[#FFFFFF]">
+<!-- Accessible Skip Link -->
+<a class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-3 focus:py-2 focus:bg-[#181818] focus:text-[#FFFFFF] focus:border focus:border-[#272727] focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C0C1FF]" href="#main-content">
+    Skip to main content
+  </a>
+<!-- Floating Translucent Navigation Bar -->
+<header class="fixed top-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
+<nav aria-label="Primary" class="pointer-events-auto h-12 px-4 bg-[#181818]/80 backdrop-blur-md border border-[#272727] rounded-full flex items-center justify-between gap-6 max-w-4xl w-full shadow-2xl transition-all duration-500 ease-brand">
+<div class="flex items-center gap-2">
+<img alt="DevDocs AI Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W7FoOzIg-FT9Xma1EW2ryYI3hJLwrXIn6B03OJZ2B9Ez8KB9aTbUMKQBQJxT6a2WPMZXmISAjhOoJ98r3QluLriLJIaxk2O7MW2LWXb3xScL1qG0lfQ-enXdv-O5QjLUzMaRV4KSpoh7yEMjje4VwTw0P-O7rIqLvPSGS0tdNZFM1YjG03Co2_ur4a8Idp_NPx1RvB_3cEKm09PBrB9_ZlfJSeujSfzQ76ZMjEhw"/>
+<span class="font-semibold text-sm tracking-tight text-[#FFFFFF]">DevDocs AI</span>
 </div>
-<!-- Main Benefit Headline -->
-<h1 class="font-display text-display text-on-surface max-w-4xl tracking-tight leading-[1.08] mb-space-lg">
-        Explore Any Codebase With <span class="text-primary italic">Zero</span> Hallucinations.
+<div class="hidden md:flex items-center gap-1">
+<a class="px-2.5 py-1 rounded-full text-xs font-medium text-[#C7C4D7] hover:text-[#FFFFFF] hover:bg-[#272727]/70 transition-all duration-300 ease-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50" href="#reality-gap">Comparison</a>
+<a class="px-2.5 py-1 rounded-full text-xs font-medium text-[#C7C4D7] hover:text-[#FFFFFF] hover:bg-[#272727]/70 transition-all duration-300 ease-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50" href="#benefits">Capabilities</a>
+<a class="px-2.5 py-1 rounded-full text-xs font-medium text-[#C7C4D7] hover:text-[#FFFFFF] hover:bg-[#272727]/70 transition-all duration-300 ease-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50" href="#how-it-works">How It Works</a>
+<a class="px-2.5 py-1 rounded-full text-xs font-medium text-[#C7C4D7] hover:text-[#FFFFFF] hover:bg-[#272727]/70 transition-all duration-300 ease-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50" href="#faq">FAQ</a>
+</div>
+<div class="flex items-center gap-3">
+<a class="py-2 px-3 bg-[#FFFFFF] text-[#000000] text-xs font-semibold rounded-full hover:bg-[#DFE2EF] hover:shadow-[0_0_14px_rgba(255,255,255,0.3)] active:scale-[0.98] active:translate-y-px transition-all duration-300 ease-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50 focus:ring-offset-2 focus:ring-offset-[#181818]" href="#cta">
+          Start free
+        </a>
+</div>
+</nav>
+</header>
+<main class="w-full pt-24 min-h-screen" id="main-content">
+<!-- HERO SECTION (Type A Layout) -->
+<section class="w-full pt-16 pb-20 px-4 flex flex-col items-center text-center reveal-on-scroll">
+<!-- Status Pill -->
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-[#181818] border border-[#272727] rounded-full mb-8 hover:border-[#4EDEA3]/40 transition-colors duration-300">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4EDEA3] opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-[#4EDEA3]"></span>
+</span>
+<span class="font-mono text-xs text-[#4EDEA3] font-medium tracking-wide">HYBRID AST v3.4 LIVE</span>
+<span class="text-[#908FA0] text-xs">•</span>
+<span class="text-xs text-[#C7C4D7]">Deterministic Commit Pinning</span>
+</div>
+<!-- Headline: max-width 680px, gradient #FFFFFF to #9B9B9B, text-wrap balance, no hyphens -->
+<h1 class="text-4xl md:text-6xl font-semibold hero-title-gradient max-w-[680px] tracking-tight leading-tight mb-6 text-balance">
+        Explore Any Codebase With Zero Hallucinations
       </h1>
-<!-- Concise Subheadline -->
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-space-2xl text-balance">
-        AI codebase intelligence that proves every single claim with exact line numbers and pinned Git commits. Stop reading stale READMEs or tracing spaghetti code manually.
+<!-- Subheadline: max-width 680px, text-wrap pretty, no hyphens -->
+<p class="text-base md:text-lg text-[#C7C4D7] max-w-[680px] mb-8 text-pretty leading-normal">
+        Codebase intelligence that proves every single architectural claim with verified line numbers and pinned Git commits for engineering teams.
       </p>
-<!-- Primary & Secondary CTA Cluster -->
-<div class="flex flex-col sm:flex-row items-center gap-space-md w-full sm:w-auto mb-space-xl">
-<a class="w-full sm:w-auto px-space-xl py-space-md bg-primary text-on-primary font-headline-sm text-headline-sm rounded-lg shadow-md hover:bg-primary-container hover:text-on-primary-container transition-all duration-150 flex items-center justify-center gap-space-sm group" href="#demo">
-<svg aria-hidden="true" class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<!-- Single Primary Action Above The Fold: Strictly py-2 px-3 (8px x 12px) -->
+<div class="flex flex-col items-center gap-4 mb-4">
+<a class="group py-2 px-3 bg-[#FFFFFF] text-[#000000] font-semibold text-sm rounded-lg hover:bg-[#DFE2EF] hover:shadow-[0_0_20px_rgba(255,255,255,0.35)] active:scale-[0.98] active:translate-y-px transition-all duration-300 ease-brand inline-flex items-center justify-center gap-2 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50 focus:ring-offset-2 focus:ring-offset-[#000000]" href="#workbench">
+<svg aria-hidden="true" class="w-4 h-4 fill-current transition-transform duration-300 group-hover:scale-110" viewbox="0 0 24 24">
 <path clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill-rule="evenodd"></path>
 </svg>
-<span>Start Free with GitHub</span>
-<span class="material-symbols-outlined text-headline-sm transition-transform group-hover:translate-x-0.5">arrow_forward</span>
+<span>Start free with GitHub</span>
+<span class="material-symbols-outlined text-sm transition-transform duration-300 group-hover:translate-x-0.5">arrow_forward</span>
 </a>
-<div class="relative w-full sm:w-72">
-<input class="w-full px-space-md py-space-md bg-surface-container-low text-on-surface-variant font-code-inline text-code-inline rounded-lg shadow-sm pl-9 pr-16 select-all cursor-pointer focus:outline-none focus:text-on-surface" readonly="" type="text" value="https://github.com/fastify/fastify"/>
-<span class="material-symbols-outlined text-outline absolute left-2.5 top-1/2 -translate-y-1/2 text-body-lg">search</span>
-<span class="font-label-caps text-label-caps text-primary absolute right-2.5 top-1/2 -translate-y-1/2 bg-surface-container-highest px-space-xs py-0.5 rounded">DEMO</span>
+<!-- Proof signal beside / directly under CTA -->
+<p class="text-xs text-[#908FA0]">
+          18,400+ developers at teams like Vercel, Supabase, Cloudflare, and Linear
+        </p>
 </div>
-</div>
-<!-- Trust Badges & Social Proof Row -->
-<div class="flex flex-col md:flex-row items-center justify-center gap-space-lg text-on-surface-variant">
-<div class="flex items-center gap-space-sm">
-<div class="flex -space-x-2">
-<span class="inline-block w-7 h-7 rounded-full bg-surface-container-highest text-primary font-label-caps text-label-caps flex items-center justify-center shadow-sm">JS</span>
-<span class="inline-block w-7 h-7 rounded-full bg-surface-container-high text-secondary font-label-caps text-label-caps flex items-center justify-center shadow-sm">RS</span>
-<span class="inline-block w-7 h-7 rounded-full bg-surface-container text-tertiary font-label-caps text-label-caps flex items-center justify-center shadow-sm">GO</span>
-<span class="inline-block w-7 h-7 rounded-full bg-surface-bright text-on-surface font-label-caps text-label-caps flex items-center justify-center shadow-sm">+18k</span>
-</div>
-<span class="font-body-sm text-body-sm text-on-surface font-medium">18,400+ developers</span>
-<span class="font-body-sm text-body-sm text-outline">at teams like Vercel, Supabase, Cloudflare, Linear</span>
-</div>
-<div class="hidden md:block w-1 h-1 bg-outline-variant rounded-full"></div>
-<div class="flex items-center gap-space-xs">
-<div class="flex text-tertiary">
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-</div>
-<span class="font-label-sm text-label-sm text-on-surface font-semibold">4.9/5</span>
-<span class="font-body-sm text-body-sm text-outline">(642 verified reviews)</span>
-</div>
-</div>
-</section>
-<!-- Visual Proof Section: Realistic DevDocs AI Workstation Mockup -->
-<section class="w-full mb-space-3xl" id="demo">
-<div class="w-full max-w-6xl mx-auto bg-surface-container-lowest rounded-xl shadow-2xl overflow-hidden flex flex-col">
-<!-- Workbench Top Frame Header -->
-<div class="w-full bg-surface-container-low px-space-md py-space-sm flex items-center justify-between">
-<div class="flex items-center gap-space-md">
+<!-- Hero Visual Proof Section: Workbench Mockup with exact nested radius formula -->
+<!-- Card outer: rounded-2xl (16px), p-2 (8px), inner: rounded-lg (8px) -->
+<div class="w-full max-w-5xl mt-12 bg-[#181818] border border-[#272727] hover:border-[#6366F1]/40 rounded-2xl p-2 shadow-2xl text-left transition-all duration-500 ease-brand" id="workbench">
+<div class="bg-[#000000] border border-[#272727] rounded-lg overflow-hidden flex flex-col">
+<!-- Frame Header -->
+<div class="w-full bg-[#181818] border-b border-[#272727] px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-3">
 <div class="flex items-center gap-1.5">
-<span class="w-3 h-3 rounded-full bg-surface-container-highest inline-block"></span>
-<span class="w-3 h-3 rounded-full bg-surface-container-highest inline-block"></span>
-<span class="w-3 h-3 rounded-full bg-surface-container-highest inline-block"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#313131] hover:bg-red-500/70 transition-colors duration-200 inline-block"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#313131] hover:bg-yellow-500/70 transition-colors duration-200 inline-block"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#313131] hover:bg-green-500/70 transition-colors duration-200 inline-block"></span>
 </div>
-<div class="flex items-center gap-space-xs font-code-inline text-code-inline text-on-surface-variant">
-<span class="material-symbols-outlined text-body-sm text-secondary">commit</span>
-<span class="font-semibold text-on-surface">fastify/fastify</span>
-<span class="text-outline">@</span>
-<span class="text-primary font-mono">v4.28.1 (commit 7b4a2e1)</span>
-</div>
-</div>
-<div class="flex items-center gap-space-sm">
-<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-surface-container text-secondary font-label-caps text-label-caps rounded">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-              100% VERIFIED AST
-            </span>
-<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-surface-container text-primary font-label-caps text-label-caps rounded">
-<span class="material-symbols-outlined text-[12px]">bolt</span>
-              84ms LATENCY
-            </span>
+<div class="flex items-center gap-1 font-mono text-xs text-[#C7C4D7]">
+<span class="material-symbols-outlined text-sm text-[#4EDEA3]">commit</span>
+<span class="font-semibold text-[#FFFFFF]">fastify/fastify</span>
+<span class="text-[#908FA0]">@</span>
+<span class="text-[#C0C1FF]">commit 7b4a2e1</span>
 </div>
 </div>
-<!-- Workbench Main Window Split: Left AI Chat Intelligence, Right Grounded Source Viewer -->
-<div class="w-full grid grid-cols-1 lg:grid-cols-12 min-h-[520px]">
-<!-- Left Column: Intelligent Grounded Query & Synthesis -->
-<div class="lg:col-span-6 bg-surface-container p-space-lg flex flex-col justify-between">
-<div class="space-y-space-md">
-<!-- Active Query Box -->
-<div class="bg-surface-container-low p-space-md rounded-lg shadow-sm">
-<div class="flex items-center justify-between mb-space-xs">
-<span class="font-label-caps text-label-caps text-primary uppercase font-bold tracking-wider">Natural Query</span>
-<span class="font-label-caps text-label-caps text-outline">Branch: main</span>
-</div>
-<p class="font-headline-sm text-headline-sm text-on-surface font-medium">
-                  "Trace how Fastify dispatches incoming requests and parses schema validation."
-                </p>
-</div>
-<!-- AI Synthesized Answer with Interactive Citations -->
-<div class="space-y-space-sm font-body-md text-body-md text-on-surface-variant">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-secondary text-body-lg">verified_user</span>
-<span class="font-label-sm text-label-sm text-on-surface font-semibold">Evidence Grounded Answer</span>
-</div>
-<p>
-                  1. Incoming Node.js HTTP stream enters the routing dispatch loop via 
-                  <button class="inline-flex items-center gap-1 px-1.5 py-0.5 bg-surface-container-high text-primary hover:bg-primary hover:text-on-primary font-label-caps text-label-caps rounded transition-colors" onclick="highlightSnippet('snippet-dispatch')">
-<span class="material-symbols-outlined text-[10px]">code</span>
-                    lib/handleRequest.js:14
-                  </button>.
-                  The dispatch engine allocates an internal request context and assigns an immutable request ID through
-                  <button class="inline-flex items-center gap-1 px-1.5 py-0.5 bg-surface-container-high text-primary hover:bg-primary hover:text-on-primary font-label-caps text-label-caps rounded transition-colors" onclick="highlightSnippet('snippet-id')">
-                    lib/reqIdGenFactory.js:28
-                  </button>.
-                </p>
-<p>
-                  2. Route validation schema is compiled during startup using <code class="font-code-inline text-code-inline text-secondary font-medium">fast-json-stringify</code>. Validation execution occurs directly inside:
-                  <button class="inline-flex items-center gap-1 px-1.5 py-0.5 bg-surface-container-high text-secondary hover:bg-secondary hover:text-on-secondary font-label-caps text-label-caps rounded transition-colors" onclick="highlightSnippet('snippet-validation')">
-                    lib/validation.js:82
-                  </button>
-                  before triggering preHandler hooks.
-                </p>
-</div>
-<!-- Grounded Citations Summary Matrix -->
-<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-inner">
-<span class="font-label-caps text-label-caps text-outline uppercase block mb-space-xs">Indexed Symbol Graph</span>
-<div class="flex flex-wrap gap-space-xs">
-<span class="px-2 py-1 bg-surface-container-low text-on-surface font-code-inline text-code-inline rounded text-xs flex items-center gap-1">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> handleRequest(req, res)
-                  </span>
-<span class="px-2 py-1 bg-surface-container-low text-on-surface font-code-inline text-code-inline rounded text-xs flex items-center gap-1">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> buildCertificateValidator()
-                  </span>
-<span class="px-2 py-1 bg-surface-container-low text-on-surface font-code-inline text-code-inline rounded text-xs flex items-center gap-1">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> runPreParsingHooks()
-                  </span>
-</div>
-</div>
-</div>
-<!-- Query Input Box Mockup -->
-<div class="mt-space-md pt-space-md flex items-center gap-space-sm">
-<div class="flex-1 bg-surface-container-lowest px-space-md py-space-sm rounded-lg flex items-center gap-space-sm shadow-inner">
-<span class="material-symbols-outlined text-outline text-body-sm">search</span>
-<span class="font-body-sm text-body-sm text-outline">Ask deep architecture question... (Cmd+K)</span>
-</div>
-<button class="p-space-sm bg-primary text-on-primary rounded-lg shadow-sm hover:bg-primary-container hover:text-on-primary-container transition-colors">
-<span class="material-symbols-outlined text-body-sm">send</span>
-</button>
-</div>
-</div>
-<!-- Right Column: AST Pinned Code Inspector (Grounded Evidence) -->
-<div class="lg:col-span-6 bg-surface-container-lowest p-space-lg flex flex-col font-code-block text-code-block text-on-surface">
-<!-- Active File Breadcrumb & IDE Links -->
-<div class="flex items-center justify-between pb-space-sm mb-space-sm">
-<div class="flex items-center gap-space-xs text-on-surface-variant font-code-inline text-code-inline">
-<span class="material-symbols-outlined text-body-sm text-tertiary">folder_open</span>
-<span>lib</span>
-<span class="text-outline">/</span>
-<span class="text-on-surface font-semibold">handleRequest.js</span>
-</div>
-<div class="flex items-center gap-space-xs font-label-caps text-label-caps">
-<span class="px-2 py-0.5 bg-surface-container-high rounded text-outline">Tree-sitter AST: OK</span>
-<span class="px-2 py-0.5 bg-surface-container-high rounded text-primary">Lines 12–26</span>
-</div>
-</div>
-<!-- Code Viewer Content -->
-<div class="flex-1 overflow-x-auto space-y-1 py-space-xs font-mono text-sm leading-relaxed select-text">
-<div class="flex items-center gap-4 text-outline/60">
-<span class="w-6 text-right select-none">12</span>
-<span class="text-on-surface-variant">function handleRequest (err, request) {</span>
-</div>
-<div class="flex items-center gap-4 text-outline/60">
-<span class="w-6 text-right select-none">13</span>
-<span class="text-outline-variant pl-4">if (err != null) {</span>
-</div>
-<!-- Highlighted Verified Target Line -->
-<div class="flex items-center gap-4 bg-primary/15 text-primary px-1 rounded transition-colors duration-300" id="snippet-dispatch">
-<span class="w-6 text-right font-bold text-primary select-none">14</span>
-<span class="pl-8 font-medium">return request.context.errorHandler(err, request, request.raw)</span>
-</div>
-<div class="flex items-center gap-4 text-outline/60">
-<span class="w-6 text-right select-none">15</span>
-<span class="text-outline-variant pl-4">}</span>
-</div>
-<div class="flex items-center gap-4 text-outline/60">
-<span class="w-6 text-right select-none">16</span>
-<span class="pl-4 text-on-surface-variant">if (request.context.preParsing !== null) {</span>
-</div>
-<div class="flex items-center gap-4 text-outline/60">
-<span class="w-6 text-right select-none">17</span>
-<span class="pl-8 text-on-surface-variant">runPreParsing(request)</span>
-</div>
-<div class="flex items-center gap-4 text-outline/60">
-<span class="w-6 text-right select-none">18</span>
-<span class="pl-4 text-on-surface-variant">} else {</span>
-</div>
-<!-- Highlighted AST Validation Target Line -->
-<div class="flex items-center gap-4 bg-secondary/15 text-secondary px-1 rounded transition-colors duration-300" id="snippet-validation">
-<span class="w-6 text-right font-bold text-secondary select-none">19</span>
-<span class="pl-8 font-medium">request.context.validate(request, runPreHandler)</span>
-</div>
-<div class="flex items-center gap-4 text-outline/60">
-<span class="w-6 text-right select-none">20</span>
-<span class="pl-4 text-on-surface-variant">}</span>
-</div>
-<div class="flex items-center gap-4 text-outline/60">
-<span class="w-6 text-right select-none">21</span>
-<span class="text-on-surface-variant">}</span>
-</div>
-</div>
-<!-- Micro Telemetry Banner -->
-<div class="mt-space-md pt-space-sm flex items-center justify-between text-outline text-body-sm">
-<span class="flex items-center gap-1 font-label-caps text-label-caps">
-<span class="material-symbols-outlined text-[14px] text-secondary">check_circle</span>
-                Proof matched SHA-256: d83a9e...
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-[#1F1F1F] border border-[#272727] text-[#4EDEA3] font-mono text-xs rounded shadow-[0_0_10px_rgba(78,222,163,0.1)]">
+<span class="relative flex h-1.5 w-1.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4EDEA3] opacity-75"></span>
+<span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#4EDEA3]"></span>
+</span>
+                VERIFIED AST
               </span>
-<a class="text-primary hover:underline font-label-caps text-label-caps flex items-center gap-1" href="#">
-                View on GitHub
-                <span class="material-symbols-outlined text-[12px]">open_in_new</span>
-</a>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-[#1F1F1F] border border-[#272727] text-[#C0C1FF] font-mono text-xs rounded">
+                84ms LATENCY
+              </span>
+</div>
+</div>
+<!-- Split Screen: Left AI Synthesis, Right Grounded Source -->
+<div class="grid grid-cols-1 lg:grid-cols-12 min-h-[460px]">
+<!-- Left: Grounded Query and Citation Response -->
+<div class="lg:col-span-6 bg-[#181818] p-6 border-b lg:border-b-0 lg:border-r border-[#272727] flex flex-col justify-between gap-6">
+<div class="space-y-4">
+<div class="bg-[#1F1F1F] border border-[#272727] p-3 rounded-md transition-all duration-300 hover:border-[#C0C1FF]/40">
+<div class="flex items-center justify-between mb-1">
+<span class="font-mono text-xs text-[#C0C1FF] font-semibold uppercase tracking-wider">Natural Query</span>
+<span class="font-mono text-xs text-[#908FA0]">Branch: main</span>
+</div>
+<p class="text-sm text-[#FFFFFF] font-medium">
+                    "Trace how Fastify dispatches incoming requests and parses schema validation."
+                  </p>
+</div>
+<div class="space-y-3 text-sm text-[#C7C4D7] leading-relaxed">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#4EDEA3] text-base">verified</span>
+<span class="text-xs font-semibold text-[#FFFFFF] uppercase tracking-wide">Evidence Grounded Answer</span>
+</div>
+<p>
+                    1. Incoming stream enters the dispatch loop in
+                    <span class="interactive-citation cursor-pointer inline-flex items-center gap-1 px-1.5 py-0.5 bg-[#272727] text-[#C0C1FF] font-mono text-xs rounded border border-[#313131] hover:bg-[#C0C1FF]/20 hover:border-[#C0C1FF] transition-all duration-200" data-target="code-line-14" title="Click or hover to highlight code">
+                      lib/handleRequest.js:14
+                    </span>.
+                    The engine allocates request context and sets an immutable request identifier via
+                    <span class="inline-flex items-center gap-1 px-1.5 py-0.5 bg-[#272727] text-[#C0C1FF] font-mono text-xs rounded border border-[#313131]">
+                      lib/reqIdGenFactory.js:28
+                    </span>.
+                  </p>
+<p>
+                    2. Schema validation is compiled on boot. Execution triggers directly on
+                    <span class="interactive-citation cursor-pointer inline-flex items-center gap-1 px-1.5 py-0.5 bg-[#272727] text-[#4EDEA3] font-mono text-xs rounded border border-[#313131] hover:bg-[#4EDEA3]/20 hover:border-[#4EDEA3] transition-all duration-200" data-target="code-line-19" title="Click or hover to highlight code">
+                      lib/validation.js:82
+                    </span>
+                    prior to preHandler hooks.
+                  </p>
+</div>
+<div class="bg-[#1F1F1F] border border-[#272727] p-3 rounded-md">
+<span class="font-mono text-xs text-[#908FA0] uppercase block mb-2">Indexed Symbol Graph</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-[#181818] border border-[#272727] text-[#FFFFFF] font-mono text-xs rounded hover:border-[#C0C1FF]/50 hover:bg-[#272727] transition-all duration-200 cursor-default">
+                      handleRequest(req, res)
+                    </span>
+<span class="px-2 py-1 bg-[#181818] border border-[#272727] text-[#FFFFFF] font-mono text-xs rounded hover:border-[#C0C1FF]/50 hover:bg-[#272727] transition-all duration-200 cursor-default">
+                      buildCertificateValidator()
+                    </span>
+<span class="px-2 py-1 bg-[#181818] border border-[#272727] text-[#FFFFFF] font-mono text-xs rounded hover:border-[#C0C1FF]/50 hover:bg-[#272727] transition-all duration-200 cursor-default">
+                      runPreParsingHooks()
+                    </span>
+</div>
+</div>
+</div>
+<!-- Input bar with simulated live prompt -->
+<div class="bg-[#1F1F1F] border border-[#272727] hover:border-[#6366F1]/50 px-3 py-2 rounded-md flex items-center justify-between transition-colors duration-200">
+<div class="flex items-center text-xs text-[#908FA0]">
+<span class="material-symbols-outlined text-sm mr-2 text-[#C0C1FF]">terminal</span>
+<span id="prompt-animated-text">Ask deep architecture question... (Cmd K)</span>
+<span class="cursor-blinking"></span>
+</div>
+<span class="font-mono text-xs text-[#C0C1FF] bg-[#272727] px-1.5 py-0.5 rounded shadow-sm">Enter</span>
+</div>
+</div>
+<!-- Right: Code Inspector Grounded Evidence -->
+<div class="lg:col-span-6 bg-[#000000] p-6 font-mono text-xs flex flex-col justify-between gap-4">
+<div>
+<div class="flex items-center justify-between pb-3 mb-3 border-b border-[#272727]">
+<div class="flex items-center gap-2 text-[#C7C4D7]">
+<span class="material-symbols-outlined text-sm text-[#FFB95F]">folder_open</span>
+<span>lib</span>
+<span class="text-[#908FA0]">/</span>
+<span class="text-[#FFFFFF] font-semibold">handleRequest.js</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 bg-[#181818] border border-[#272727] text-[#908FA0] rounded">Tree sitter AST: OK</span>
+<span class="px-2 py-0.5 bg-[#181818] border border-[#272727] text-[#C0C1FF] rounded">Lines 12 to 21</span>
+</div>
+</div>
+<div class="space-y-1.5 leading-relaxed text-[#C7C4D7] overflow-x-auto">
+<div class="flex items-center gap-4 text-[#908FA0]">
+<span class="w-6 text-right select-none">12</span>
+<span class="text-[#FFFFFF]">function handleRequest (err, request) {</span>
+</div>
+<div class="flex items-center gap-4 text-[#908FA0]">
+<span class="w-6 text-right select-none">13</span>
+<span class="pl-4">if (err != null) {</span>
+</div>
+<!-- Target Line Pinned (Line 14) -->
+<div class="line-interactive flex items-center gap-4 bg-[#1F1F1F] text-[#C0C1FF] px-2 py-0.5 rounded border border-[#313131]" id="code-line-14">
+<span class="w-6 text-right font-bold text-[#FFFFFF] select-none">14</span>
+<span class="pl-4 font-semibold">return request.context.errorHandler(err, request, request.raw)</span>
+</div>
+<div class="flex items-center gap-4 text-[#908FA0]">
+<span class="w-6 text-right select-none">15</span>
+<span class="pl-4">}</span>
+</div>
+<div class="flex items-center gap-4 text-[#908FA0]">
+<span class="w-6 text-right select-none">16</span>
+<span class="pl-4 text-[#FFFFFF]">if (request.context.preParsing !== null) {</span>
+</div>
+<div class="flex items-center gap-4 text-[#908FA0]">
+<span class="w-6 text-right select-none">17</span>
+<span class="pl-8 text-[#FFFFFF]">runPreParsing(request)</span>
+</div>
+<div class="flex items-center gap-4 text-[#908FA0]">
+<span class="w-6 text-right select-none">18</span>
+<span class="pl-4">} else {</span>
+</div>
+<!-- Validation Line Pinned (Line 19) -->
+<div class="line-interactive flex items-center gap-4 bg-[#1F1F1F] text-[#4EDEA3] px-2 py-0.5 rounded border border-[#313131]" id="code-line-19">
+<span class="w-6 text-right font-bold text-[#4EDEA3] select-none">19</span>
+<span class="pl-4 font-semibold">request.context.validate(request, runPreHandler)</span>
+</div>
+<div class="flex items-center gap-4 text-[#908FA0]">
+<span class="w-6 text-right select-none">20</span>
+<span class="pl-4">}</span>
+</div>
+<div class="flex items-center gap-4 text-[#908FA0]">
+<span class="w-6 text-right select-none">21</span>
+<span class="text-[#FFFFFF]">}</span>
+</div>
+</div>
+</div>
+<div class="pt-3 border-t border-[#272727] flex items-center justify-between text-[#908FA0]">
+<span class="flex items-center gap-1.5 text-xs">
+<span class="material-symbols-outlined text-xs text-[#4EDEA3]">verified</span>
+                  SHA256 verified against commit 7b4a2e1
+                </span>
+<span class="text-xs text-[#C0C1FF]">Deterministic proof</span>
+</div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<!-- Core Feature Outcomes (Outcomes over Specs) -->
-<section class="w-full py-space-3xl">
-<div class="max-w-6xl mx-auto">
-<div class="text-center max-w-2xl mx-auto mb-space-2xl">
-<span class="font-label-caps text-label-caps text-primary font-bold uppercase tracking-wider block mb-space-xs">Engine Capabilities</span>
-<h2 class="font-headline-xl text-headline-xl text-on-surface font-semibold">Engineered for surgical precision. Built for 500k+ line codebases.</h2>
+<!-- SECTION: THE REALITY GAP (Problem to Solution) -->
+<section class="w-full py-20 px-4 bg-[#000000] reveal-on-scroll" id="reality-gap">
+<div class="max-w-5xl mx-auto">
+<div class="text-center max-w-xl mx-auto mb-16">
+<span class="font-mono text-xs text-[#4EDEA3] font-semibold uppercase tracking-wider block mb-2">The Reality Gap</span>
+<h2 class="text-3xl md:text-4xl font-semibold text-[#FFFFFF] tracking-tight leading-snug">
+            Standard Chatbots vs DevDocs AI
+          </h2>
+<p class="text-sm md:text-base text-[#C7C4D7] mt-3 text-pretty">
+            Generic LLMs guess plausible code patterns. DevDocs AI proves every statement with verified AST citations.
+          </p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
-<!-- Benefit 1 -->
-<div class="bg-surface-container p-space-xl rounded-xl shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between group">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Generic LLMs Card -->
+<div class="group bg-[#181818] border border-[#272727] hover:border-[#FFB4AB]/40 p-8 rounded-xl flex flex-col justify-between transition-all duration-500 ease-brand hover:-translate-y-1 hover:shadow-2xl">
 <div>
-<div class="w-10 h-10 rounded-lg bg-surface-container-high text-primary flex items-center justify-center mb-space-md group-hover:scale-105 transition-transform">
-<span class="material-symbols-outlined text-headline-md">speed</span>
+<div class="flex items-center justify-between mb-6">
+<span class="text-base font-semibold text-[#C7C4D7]">Generic LLMs and Copilot Chat</span>
+<span class="px-2 py-0.5 bg-[#1F1F1F] border border-[#272727] text-[#FFB4AB] font-mono text-xs rounded">High Hallucination Risk</span>
 </div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-space-xs">
-                Onboard in Hours, Not Weeks
+<div class="space-y-4 text-sm text-[#C7C4D7]">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[#FFB4AB] text-lg shrink-0">cancel</span>
+<p><strong class="text-[#FFFFFF] font-semibold">Plausible Inventions:</strong> Suggests methods and hook APIs that were deprecated versions ago or never existed.</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[#FFB4AB] text-lg shrink-0">cancel</span>
+<p><strong class="text-[#FFFFFF] font-semibold">No Line Pinning:</strong> Cannot prove where logic executes or gives arbitrary imaginary line coordinates.</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[#FFB4AB] text-lg shrink-0">cancel</span>
+<p><strong class="text-[#FFFFFF] font-semibold">Lost in Scale:</strong> Degrades rapidly over multi repository workspaces with hundreds of thousands of lines.</p>
+</div>
+</div>
+</div>
+<div class="mt-8 p-4 bg-[#1F1F1F] border border-[#272727] rounded-lg font-mono text-xs text-[#FFB4AB]">
+              // Generic Chatbot: You can configure this using fastify.useLifecycleHook()<br/>
+<span class="text-[#908FA0]">// Status: Error TS2339: Property does not exist.</span>
+</div>
+</div>
+<!-- DevDocs AI Card -->
+<div class="group bg-[#1F1F1F] border border-[#313131] hover:border-[#4EDEA3]/50 p-8 rounded-xl flex flex-col justify-between shadow-xl transition-all duration-500 ease-brand hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(78,222,163,0.12)]">
+<div>
+<div class="flex items-center justify-between mb-6">
+<span class="text-base font-semibold text-[#FFFFFF]">DevDocs AI Verification</span>
+<span class="px-2 py-0.5 bg-[#181818] border border-[#272727] text-[#4EDEA3] font-mono text-xs rounded font-medium flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-[#4EDEA3]"></span>
+                100% Deterministic AST
+              </span>
+</div>
+<div class="space-y-4 text-sm text-[#DFE2EF]">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[#4EDEA3] text-lg shrink-0">check_circle</span>
+<p><strong class="text-[#FFFFFF] font-semibold">Tree Sitter AST Graphing:</strong> Parses symbol definitions, call hierarchies, and inheritance maps with complete compiler fidelity.</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[#4EDEA3] text-lg shrink-0">check_circle</span>
+<p><strong class="text-[#FFFFFF] font-semibold">Git Commit Pinning:</strong> Every reference highlights specific lines pinned to the exact commit SHA you are investigating.</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[#4EDEA3] text-lg shrink-0">check_circle</span>
+<p><strong class="text-[#FFFFFF] font-semibold">Deep Monorepo Mastery:</strong> Resolves internal dependencies and workspace boundaries across all linked packages.</p>
+</div>
+</div>
+</div>
+<div class="mt-8 p-4 bg-[#000000] border border-[#272727] group-hover:border-[#4EDEA3]/30 rounded-lg font-mono text-xs text-[#4EDEA3] transition-colors duration-300">
+              // DevDocs AI: Resolved in lib/hooks.js:42 via createHookRunner()<br/>
+<span class="text-[#908FA0]">// Verified: SHA256 validated against commit 7b4a2e1. Zero hallucinations.</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: MANDATORY B11 TAGLINE REVEAL ON SCROLL -->
+<section class="w-full py-24 md:py-32 px-4 bg-[#181818] border-y border-[#272727] reveal-on-scroll" id="tagline-reveal-section">
+<div class="max-w-4xl mx-auto text-center">
+<span class="font-mono text-xs text-[#C0C1FF] font-semibold uppercase tracking-wider block mb-6">Our Core Conviction</span>
+<!-- Words start at opacity 30% and activate to 100% white on scroll -->
+<p class="text-3xl md:text-5xl font-semibold leading-tight tracking-tight text-balance" id="reveal-text">
+<span class="reveal-word opacity-30 text-[#DFE2EF]">Software</span>
+<span class="reveal-word opacity-30 text-[#DFE2EF]">architecture</span>
+<span class="reveal-word opacity-30 text-[#DFE2EF]">requires</span>
+<span class="reveal-word opacity-30 text-[#DFE2EF]">mathematical</span>
+<span class="reveal-word opacity-30 text-[#DFE2EF]">certainty.</span>
+<br class="hidden md:block"/>
+<span class="reveal-word opacity-30 text-[#DFE2EF]">Never</span>
+<span class="reveal-word opacity-30 text-[#DFE2EF]">accept</span>
+<span class="reveal-word opacity-30 text-[#DFE2EF]">an</span>
+<span class="reveal-word opacity-30 text-[#DFE2EF]">AI</span>
+<span class="reveal-word opacity-30 text-[#DFE2EF]">response</span>
+<span class="reveal-word opacity-30 text-[#DFE2EF]">without</span>
+<span class="reveal-word opacity-30 text-[#DFE2EF]">verifiable</span>
+<span class="reveal-word opacity-30 text-[#DFE2EF]">line</span>
+<span class="reveal-word opacity-30 text-[#DFE2EF]">citations.</span>
+</p>
+</div>
+</section>
+<!-- SECTION: 4 OUTCOME-DRIVEN BENEFITS -->
+<section class="w-full py-20 px-4 bg-[#000000] reveal-on-scroll" id="benefits">
+<div class="max-w-6xl mx-auto">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<span class="font-mono text-xs text-[#C0C1FF] font-semibold uppercase tracking-wider block mb-2">Engine Capabilities</span>
+<h2 class="text-3xl md:text-4xl font-semibold text-[#FFFFFF] tracking-tight leading-snug">
+            Engineered for surgical precision across large scale systems
+          </h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Benefit 1 -->
+<div class="group bg-[#181818] border border-[#272727] hover:border-[#6366F1]/50 p-6 rounded-xl flex flex-col justify-between transition-all duration-500 ease-brand hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(99,102,241,0.15)]">
+<div>
+<div class="w-10 h-10 rounded-lg bg-[#272727] group-hover:bg-[#6366F1]/20 text-[#C0C1FF] flex items-center justify-center mb-6 transition-colors duration-300">
+<span class="material-symbols-outlined text-xl transition-transform duration-300 group-hover:scale-110">speed</span>
+</div>
+<h3 class="text-base font-semibold text-[#FFFFFF] mb-2 leading-snug">
+                Onboard in Hours Not Weeks
               </h3>
-<p class="font-body-md text-body-md text-on-surface-variant">
+<p class="text-xs md:text-sm text-[#C7C4D7] leading-relaxed">
                 Grasp complex architectural boundaries, circular dependencies, and custom lifecycle patterns immediately upon joining a new team or inherited repository.
               </p>
 </div>
-<div class="mt-space-lg pt-space-md flex items-center gap-space-xs text-secondary font-label-caps text-label-caps">
-<span class="material-symbols-outlined text-body-sm">check</span>
+<div class="mt-6 pt-4 border-t border-[#272727] flex items-center gap-2 text-[#4EDEA3] font-mono text-xs">
+<span class="material-symbols-outlined text-sm">check</span>
 <span>80% faster PR delivery</span>
 </div>
 </div>
 <!-- Benefit 2 -->
-<div class="bg-surface-container p-space-xl rounded-xl shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between group">
+<div class="group bg-[#181818] border border-[#272727] hover:border-[#4EDEA3]/50 p-6 rounded-xl flex flex-col justify-between transition-all duration-500 ease-brand hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(78,222,163,0.15)]">
 <div>
-<div class="w-10 h-10 rounded-lg bg-surface-container-high text-secondary flex items-center justify-center mb-space-md group-hover:scale-105 transition-transform">
-<span class="material-symbols-outlined text-headline-md">policy</span>
+<div class="w-10 h-10 rounded-lg bg-[#272727] group-hover:bg-[#4EDEA3]/20 text-[#4EDEA3] flex items-center justify-center mb-6 transition-colors duration-300">
+<span class="material-symbols-outlined text-xl transition-transform duration-300 group-hover:scale-110">policy</span>
 </div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-space-xs">
+<h3 class="text-base font-semibold text-[#FFFFFF] mb-2 leading-snug">
                 Citations You Can Trust With Your Job
               </h3>
-<p class="font-body-md text-body-md text-on-surface-variant">
-                Never second-guess whether an exported function exists. Every response is anchored directly to parsed abstract syntax tree nodes and immutable commit hashes.
+<p class="text-xs md:text-sm text-[#C7C4D7] leading-relaxed">
+                Never second guess whether an exported function exists. Every response is anchored directly to parsed abstract syntax tree nodes and immutable commit hashes.
               </p>
 </div>
-<div class="mt-space-lg pt-space-md flex items-center gap-space-xs text-secondary font-label-caps text-label-caps">
-<span class="material-symbols-outlined text-body-sm">check</span>
+<div class="mt-6 pt-4 border-t border-[#272727] flex items-center gap-2 text-[#4EDEA3] font-mono text-xs">
+<span class="material-symbols-outlined text-sm">check</span>
 <span>Zero phantom APIs</span>
 </div>
 </div>
 <!-- Benefit 3 -->
-<div class="bg-surface-container p-space-xl rounded-xl shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between group">
+<div class="group bg-[#181818] border border-[#272727] hover:border-[#FFB95F]/50 p-6 rounded-xl flex flex-col justify-between transition-all duration-500 ease-brand hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(255,185,95,0.15)]">
 <div>
-<div class="w-10 h-10 rounded-lg bg-surface-container-high text-tertiary flex items-center justify-center mb-space-md group-hover:scale-105 transition-transform">
-<span class="material-symbols-outlined text-headline-md">hub</span>
+<div class="w-10 h-10 rounded-lg bg-[#272727] group-hover:bg-[#FFB95F]/20 text-[#FFB95F] flex items-center justify-center mb-6 transition-colors duration-300">
+<span class="material-symbols-outlined text-xl transition-transform duration-300 group-hover:scale-110">hub</span>
 </div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-space-xs">
-                Zero-Setup Knowledge Extraction
+<h3 class="text-base font-semibold text-[#FFFFFF] mb-2 leading-snug">
+                Zero Configuration Extraction
               </h3>
-<p class="font-body-md text-body-md text-on-surface-variant">
+<p class="text-xs md:text-sm text-[#C7C4D7] leading-relaxed">
                 No manual vector databases, no prompt engineering, and no configuration files. Simply authenticate GitHub and our indexing pipelines extract structural symbols instantly.
               </p>
 </div>
-<div class="mt-space-lg pt-space-md flex items-center gap-space-xs text-secondary font-label-caps text-label-caps">
-<span class="material-symbols-outlined text-body-sm">check</span>
-<span>Sub-minute setup</span>
+<div class="mt-6 pt-4 border-t border-[#272727] flex items-center gap-2 text-[#4EDEA3] font-mono text-xs">
+<span class="material-symbols-outlined text-sm">check</span>
+<span>Sub minute setup</span>
 </div>
 </div>
 <!-- Benefit 4 -->
-<div class="bg-surface-container p-space-xl rounded-xl shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between group">
+<div class="group bg-[#181818] border border-[#272727] hover:border-[#FFB4AB]/50 p-6 rounded-xl flex flex-col justify-between transition-all duration-500 ease-brand hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(255,180,171,0.15)]">
 <div>
-<div class="w-10 h-10 rounded-lg bg-surface-container-high text-error flex items-center justify-center mb-space-md group-hover:scale-105 transition-transform">
-<span class="material-symbols-outlined text-headline-md">shield</span>
+<div class="w-10 h-10 rounded-lg bg-[#272727] group-hover:bg-[#FFB4AB]/20 text-[#FFB4AB] flex items-center justify-center mb-6 transition-colors duration-300">
+<span class="material-symbols-outlined text-xl transition-transform duration-300 group-hover:scale-110">shield</span>
 </div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-space-xs">
-                Isolated Enclaves &amp; Zero Data Training
+<h3 class="text-base font-semibold text-[#FFFFFF] mb-2 leading-snug">
+                Isolated Ephemeral Sandboxes
               </h3>
-<p class="font-body-md text-body-md text-on-surface-variant">
-                Enterprise code stays confidential. Processed inside SOC2 Type II ephemeral execution sandboxes. Your proprietary algorithms are never retained or used to train base models.
+<p class="text-xs md:text-sm text-[#C7C4D7] leading-relaxed">
+                Enterprise code stays confidential. Processed inside SOC2 Type II execution sandboxes. Your proprietary algorithms are never retained or used to train base models.
               </p>
 </div>
-<div class="mt-space-lg pt-space-md flex items-center gap-space-xs text-secondary font-label-caps text-label-caps">
-<span class="material-symbols-outlined text-body-sm">check</span>
-<span>Row-Level Security</span>
+<div class="mt-6 pt-4 border-t border-[#272727] flex items-center gap-2 text-[#4EDEA3] font-mono text-xs">
+<span class="material-symbols-outlined text-sm">check</span>
+<span>Hardware encryption</span>
 </div>
 </div>
 </div>
 </div>
 </section>
-<!-- Interactive Head-to-Head Comparison: Generic LLM vs DevDocs AI -->
-<section class="w-full py-space-3xl">
+<!-- SECTION: HOW IT WORKS (Exactly 3 Numbered Steps) -->
+<section class="w-full py-20 px-4 bg-[#181818] border-y border-[#272727] reveal-on-scroll" id="how-it-works">
 <div class="max-w-5xl mx-auto">
-<div class="text-center max-w-xl mx-auto mb-space-2xl">
-<span class="font-label-caps text-label-caps text-secondary font-bold uppercase tracking-wider block mb-space-xs">The Reality Gap</span>
-<h2 class="font-headline-xl text-headline-xl text-on-surface font-semibold">Standard Chatbots vs. DevDocs AI</h2>
-<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">Generic LLMs make believable assumptions. DevDocs AI returns verifiable evidence.</p>
+<div class="text-center max-w-xl mx-auto mb-16">
+<span class="font-mono text-xs text-[#4EDEA3] font-semibold uppercase tracking-wider block mb-2">Process</span>
+<h2 class="text-3xl md:text-4xl font-semibold text-[#FFFFFF] tracking-tight leading-snug">
+            How DevDocs AI Operates
+          </h2>
+<p class="text-sm md:text-base text-[#C7C4D7] mt-3">
+            Three deterministic stages from repository URL to verified proof.
+          </p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
-<!-- Generic LLM Card -->
-<div class="bg-surface-container-low p-space-xl rounded-xl shadow-sm flex flex-col justify-between">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Step 1 -->
+<div class="group bg-[#1F1F1F] border border-[#272727] hover:border-[#C0C1FF]/50 p-6 rounded-xl flex flex-col justify-between transition-all duration-500 ease-brand hover:-translate-y-1">
 <div>
-<div class="flex items-center justify-between mb-space-md">
-<span class="font-headline-sm text-headline-sm text-on-surface-variant font-medium">Generic LLMs &amp; Copilot Chat</span>
-<span class="px-2 py-0.5 bg-error-container text-on-error-container font-label-caps text-label-caps rounded">High Hallucination Risk</span>
+<span class="font-mono text-xs text-[#C0C1FF] font-semibold mb-4 block group-hover:translate-x-1 transition-transform duration-300">01 / REPOSITORY CONNECTION</span>
+<h3 class="text-lg font-semibold text-[#FFFFFF] mb-2">Connect Repository</h3>
+<p class="text-xs md:text-sm text-[#C7C4D7] leading-relaxed">
+                Provide any public or private GitHub repository link. Our system inspects the target Git commit SHA within seconds.
+              </p>
 </div>
-<div class="space-y-space-md font-body-md text-body-md text-on-surface-variant">
-<div class="flex items-start gap-space-sm">
-<span class="material-symbols-outlined text-error text-body-lg">close</span>
-<p><strong class="text-on-surface">Plausible Inventions:</strong> Suggests methods and hook APIs that were deprecated 3 versions ago or simply never existed.</p>
+<div class="mt-8 font-mono text-xs text-[#908FA0] group-hover:text-[#FFFFFF] bg-[#181818] p-3 rounded-lg border border-[#272727] group-hover:border-[#C0C1FF]/30 transition-all duration-300">
+              $ devdocs connect fastify/fastify
+            </div>
 </div>
-<div class="flex items-start gap-space-sm">
-<span class="material-symbols-outlined text-error text-body-lg">close</span>
-<p><strong class="text-on-surface">No Line Pinning:</strong> Cannot prove where logic executes or gives arbitrary imaginary line counts.</p>
-</div>
-<div class="flex items-start gap-space-sm">
-<span class="material-symbols-outlined text-error text-body-lg">close</span>
-<p><strong class="text-on-surface">Lost in Scale:</strong> Degrades rapidly over multi-package monorepos with 150k+ lines of code.</p>
-</div>
-</div>
-</div>
-<div class="mt-space-xl p-space-md bg-surface-container rounded-lg font-code-inline text-code-inline text-error text-xs">
-              // Generic Chatbot: "You can configure this using fastify.useLifecycleHook()!"<br/>
-<span class="text-outline-variant font-mono">// Status: Error TS2339: Property 'useLifecycleHook' does not exist.</span>
-</div>
-</div>
-<!-- DevDocs AI Card -->
-<div class="bg-surface-container p-space-xl rounded-xl shadow-xl flex flex-col justify-between relative overflow-hidden">
-<div class="absolute -right-8 -top-8 w-32 h-32 bg-primary/10 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Step 2 -->
+<div class="group bg-[#1F1F1F] border border-[#272727] hover:border-[#4EDEA3]/50 p-6 rounded-xl flex flex-col justify-between transition-all duration-500 ease-brand hover:-translate-y-1">
 <div>
-<div class="flex items-center justify-between mb-space-md">
-<span class="font-headline-sm text-headline-sm text-primary font-semibold">DevDocs AI Intelligence</span>
-<span class="px-2 py-0.5 bg-secondary-container text-on-secondary font-label-caps text-label-caps rounded font-medium">100% Deterministic AST</span>
+<span class="font-mono text-xs text-[#4EDEA3] font-semibold mb-4 block group-hover:translate-x-1 transition-transform duration-300">02 / COMPILER GRAPHING</span>
+<h3 class="text-lg font-semibold text-[#FFFFFF] mb-2">AST Parsing and Pinning</h3>
+<p class="text-xs md:text-sm text-[#C7C4D7] leading-relaxed">
+                Native Tree Sitter parsers map call trees, interfaces, and symbol boundaries, establishing immutable line level coordinates.
+              </p>
 </div>
-<div class="space-y-space-md font-body-md text-body-md text-on-surface">
-<div class="flex items-start gap-space-sm">
-<span class="material-symbols-outlined text-secondary text-body-lg">check_circle</span>
-<p><strong class="text-on-surface">Tree-sitter AST Graphing:</strong> Parses symbol definitions, call hierarchies, and inheritance maps with compiler correctness.</p>
+<div class="mt-8 font-mono text-xs text-[#4EDEA3] bg-[#181818] p-3 rounded-lg border border-[#272727] group-hover:border-[#4EDEA3]/30 transition-all duration-300">
+              ✔ Generated 14,290 AST nodes
+            </div>
 </div>
-<div class="flex items-start gap-space-sm">
-<span class="material-symbols-outlined text-secondary text-body-lg">check_circle</span>
-<p><strong class="text-on-surface">Git Commit Pinning:</strong> Every reference highlights specific lines pinned to the exact commit SHA you are investigating.</p>
+<!-- Step 3 -->
+<div class="group bg-[#1F1F1F] border border-[#272727] hover:border-[#FFB95F]/50 p-6 rounded-xl flex flex-col justify-between transition-all duration-500 ease-brand hover:-translate-y-1">
+<div>
+<span class="font-mono text-xs text-[#FFB95F] font-semibold mb-4 block group-hover:translate-x-1 transition-transform duration-300">03 / VERIFIED INQUIRY</span>
+<h3 class="text-lg font-semibold text-[#FFFFFF] mb-2">Cited Exploration</h3>
+<p class="text-xs md:text-sm text-[#C7C4D7] leading-relaxed">
+                Ask architectural questions in plain English. Every assertion comes verified with exact file paths, line ranges, and commit links.
+              </p>
 </div>
-<div class="flex items-start gap-space-sm">
-<span class="material-symbols-outlined text-secondary text-body-lg">check_circle</span>
-<p><strong class="text-on-surface">Deep Monorepo Mastery:</strong> Resolves dependencies, yarn/pnpm workspaces, and internal package boundaries seamlessly.</p>
-</div>
-</div>
-</div>
-<div class="mt-space-xl p-space-md bg-surface-container-lowest rounded-lg font-code-inline text-code-inline text-secondary text-xs">
-              // DevDocs AI: "Resolved in lib/hooks.js:42 via createHookRunner()"<br/>
-<span class="text-outline font-mono">// Verified: SHA-256 checked against commit #7b4a2e1. Zero hallucinations.</span>
-</div>
+<div class="mt-8 font-mono text-xs text-[#C0C1FF] bg-[#181818] p-3 rounded-lg border border-[#272727] group-hover:border-[#FFB95F]/30 transition-all duration-300">
+              Verified answer with 4 SHA citations
+            </div>
 </div>
 </div>
 </div>
 </section>
-<!-- Social Proof & Authentic Testimonial Grid -->
-<section class="w-full py-space-3xl">
+<!-- SECTION: AUTHENTIC DEVELOPER TESTIMONIALS -->
+<section class="w-full py-20 px-4 bg-[#000000] reveal-on-scroll">
 <div class="max-w-6xl mx-auto">
-<div class="text-center max-w-xl mx-auto mb-space-2xl">
-<span class="font-label-caps text-label-caps text-primary font-bold uppercase tracking-wider block mb-space-xs">Engineers in Production</span>
-<h2 class="font-headline-xl text-headline-xl text-on-surface font-semibold">Saved thousands of engineering hours.</h2>
+<div class="text-center max-w-xl mx-auto mb-16">
+<span class="font-mono text-xs text-[#C0C1FF] font-semibold uppercase tracking-wider block mb-2">Engineers in Production</span>
+<h2 class="text-3xl md:text-4xl font-semibold text-[#FFFFFF] tracking-tight leading-snug">
+            Saved thousands of engineering hours
+          </h2>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 <!-- Testimonial 1 -->
-<div class="bg-surface-container p-space-xl rounded-xl shadow-sm flex flex-col justify-between">
-<div class="space-y-space-md">
-<div class="flex text-tertiary">
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<div class="group bg-[#181818] border border-[#272727] hover:border-[#C0C1FF]/40 p-6 rounded-xl flex flex-col justify-between transition-all duration-500 ease-brand hover:-translate-y-1 hover:shadow-2xl">
+<div class="space-y-4">
+<div class="flex text-[#FFB95F] gap-0.5">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
 </div>
-<p class="font-body-md text-body-md text-on-surface italic">
-                "I had to audit a 380,000-line legacy payment orchestration engine with zero documentation. DevDocs AI mapped the state machine in one afternoon. The commit citation feature alone prevents hours of dead-end searches."
+<p class="text-sm text-[#DFE2EF] leading-relaxed">
+                "I had to audit a 380,000 line legacy payment orchestration engine with zero documentation. DevDocs AI mapped the state machine in one afternoon. The commit citation feature alone prevents hours of dead end searches."
               </p>
 </div>
-<div class="mt-space-lg pt-space-md flex items-center gap-space-sm">
-<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="Close up modern studio portrait of a senior software engineer in a minimal dark workshop, high key moody lighting, professional developer headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYNlZpKjBn3G5RUtUgMqZcFHv5hDnXvXJdV_JCO5uQtz3CoMrzGCG8vYkwtykIqBoZPymMK2ZJAYJlRzgZMQ0OQJvUqxqQyvYcNGxbv4kEG4pVB3--4zMZP5SwzmAUa02fylVq9sL2ofuL8h9Ha6SUYLplRCGmwFKcteoWi1XEWZsW1HC9JiPKkQUKbg_Ud9V9EQu3ztym1PJ9i_wQuYU7kBnoXgNtU_pYIrBiIw"/>
+<div class="mt-6 pt-4 border-t border-[#272727] flex items-center gap-3">
+<img alt="David K portrait" class="w-9 h-9 rounded-full object-cover border border-[#272727] group-hover:border-[#C0C1FF]/50 transition-colors duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYNlZpKjBn3G5RUtUgMqZcFHv5hDnXvXJdV_JCO5uQtz3CoMrzGCG8vYkwtykIqBoZPymMK2ZJAYJlRzgZMQ0OQJvUqxqQyvYcNGxbv4kEG4pVB3--4zMZP5SwzmAUa02fylVq9sL2ofuL8h9Ha6SUYLplRCGmwFKcteoWi1XEWZsW1HC9JiPKkQUKbg_Ud9V9EQu3ztym1PJ9i_wQuYU7kBnoXgNtU_pYIrBiIw"/>
 <div>
-<span class="font-headline-sm text-headline-sm text-on-surface block font-semibold">David K.</span>
-<span class="font-label-sm text-label-sm text-outline block">Staff Infrastructure Engineer • Fintech Unicorn</span>
+<span class="text-sm text-[#FFFFFF] font-semibold block">David K.</span>
+<span class="text-xs text-[#908FA0] block">Staff Infrastructure Engineer at Fintech Unicorn</span>
 </div>
 </div>
 </div>
 <!-- Testimonial 2 -->
-<div class="bg-surface-container p-space-xl rounded-xl shadow-sm flex flex-col justify-between">
-<div class="space-y-space-md">
-<div class="flex text-tertiary">
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<div class="group bg-[#181818] border border-[#272727] hover:border-[#4EDEA3]/40 p-6 rounded-xl flex flex-col justify-between transition-all duration-500 ease-brand hover:-translate-y-1 hover:shadow-2xl">
+<div class="space-y-4">
+<div class="flex text-[#FFB95F] gap-0.5">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
 </div>
-<p class="font-body-md text-body-md text-on-surface italic">
-                "When new contributors submit PRs, we point them directly to our DevDocs AI indexed workspace. Our maintainer triage workload dropped dramatically because contributors actually understand our lifecycle hooks."
+<p class="text-sm text-[#DFE2EF] leading-relaxed">
+                "When new contributors submit pull requests, we point them directly to our DevDocs AI indexed workspace. Our maintainer triage workload dropped dramatically because contributors actually understand our lifecycle hooks."
               </p>
 </div>
-<div class="mt-space-lg pt-space-md flex items-center gap-space-sm">
-<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="Portrait of an open source developer with natural lighting in a contemporary creative office with tech equipment, authentic and focused" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAujXtUS4-8SVmXAU2RNjT1P9h0PfZVSM7nIXzP_8Uk-DZvAzn2Y6SkbgmO_6DC5aEPWUJqxTPBXabL3rwjWyuqEuuCc-RhtCXdaJq9aiwB2fU1hewMwQ9Fy7h-yaQAMDhCD76dOZhEUdYPyeFD0ki7W5XttzJufjx4Fm25Sk_hII41ECB1ro8O-DnKgYEqc1lDqhiz9cH8XDLNaZAcZqRVdvw2E7jUTDYD2hLXIA"/>
+<div class="mt-6 pt-4 border-t border-[#272727] flex items-center gap-3">
+<img alt="Elena R portrait" class="w-9 h-9 rounded-full object-cover border border-[#272727] group-hover:border-[#4EDEA3]/50 transition-colors duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAujXtUS4-8SVmXAU2RNjT1P9h0PfZVSM7nIXzP_8Uk-DZvAzn2Y6SkbgmO_6DC5aEPWUJqxTPBXabL3rwjWyuqEuuCc-RhtCXdaJq9aiwB2fU1hewMwQ9Fy7h-yaQAMDhCD76dOZhEUdYPyeFD0ki7W5XttzJufjx4Fm25Sk_hII41ECB1ro8O-DnKgYEqc1lDqhiz9cH8XDLNaZAcZqRVdvw2E7jUTDYD2hLXIA"/>
 <div>
-<span class="font-headline-sm text-headline-sm text-on-surface block font-semibold">Elena R.</span>
-<span class="font-label-sm text-label-sm text-outline block">Lead Maintainer • High-Performance Web Framework</span>
+<span class="text-sm text-[#FFFFFF] font-semibold block">Elena R.</span>
+<span class="text-xs text-[#908FA0] block">Lead Maintainer at High Performance Web Framework</span>
 </div>
 </div>
 </div>
 <!-- Testimonial 3 -->
-<div class="bg-surface-container p-space-xl rounded-xl shadow-sm flex flex-col justify-between">
-<div class="space-y-space-md">
-<div class="flex text-tertiary">
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<div class="group bg-[#181818] border border-[#272727] hover:border-[#FFB95F]/40 p-6 rounded-xl flex flex-col justify-between transition-all duration-500 ease-brand hover:-translate-y-1 hover:shadow-2xl">
+<div class="space-y-4">
+<div class="flex text-[#FFB95F] gap-0.5">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
 </div>
-<p class="font-body-md text-body-md text-on-surface italic">
+<p class="text-sm text-[#DFE2EF] leading-relaxed">
                 "Generic AI models constantly invented methods that looked real but threw runtime errors. DevDocs AI is the first developer tool where I trust every single link because it actually executes AST parsing."
               </p>
 </div>
-<div class="mt-space-lg pt-space-md flex items-center gap-space-sm">
-<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="Professional portrait of a female software architect working in a modern distributed technology company, thoughtful expression, ambient studio light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm99Y9ra-v2BzB1mdWLD6OB2mRy-qobAZgaucGnQSn6balTsIeonoCDhqQ6O80yoE44mMEQI0tyvkWNZaB3X-nhvhKSLlM-ErXh2ijbdUYd-TWNiU1YS3ydeWHeA-PnD_7MTDpyZq9VpH_mO3rAtBpVN3DHiJjbM8_WVWzjnDNkfswN3_hO8-9YemUTFFJ6Pr8J6rJjk-ysmxdFxcl_x5KCSbil2FPxJrXF7dRtg"/>
+<div class="mt-6 pt-4 border-t border-[#272727] flex items-center gap-3">
+<img alt="Sarah T portrait" class="w-9 h-9 rounded-full object-cover border border-[#272727] group-hover:border-[#FFB95F]/50 transition-colors duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm99Y9ra-v2BzB1mdWLD6OB2mRy-qobAZgaucGnQSn6balTsIeonoCDhqQ6O80yoE44mMEQI0tyvkWNZaB3X-nhvhKSLlM-ErXh2ijbdUYd-TWNiU1YS3ydeWHeA-PnD_7MTDpyZq9VpH_mO3rAtBpVN3DHiJjbM8_WVWzjnDNkfswN3_hO8-9YemUTFFJ6Pr8J6rJjk-ysmxdFxcl_x5KCSbil2FPxJrXF7dRtg"/>
 <div>
-<span class="font-headline-sm text-headline-sm text-on-surface block font-semibold">Sarah T.</span>
-<span class="font-label-sm text-label-sm text-outline block">Principal Systems Architect • Distributed Cloud Platform</span>
+<span class="text-sm text-[#FFFFFF] font-semibold block">Sarah T.</span>
+<span class="text-xs text-[#908FA0] block">Principal Systems Architect at Distributed Cloud Platform</span>
 </div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<!-- Bottom High-Converting CTA Banner -->
-<section class="w-full py-space-3xl">
-<div class="max-w-5xl mx-auto bg-surface-container-high rounded-2xl p-space-2xl md:p-space-3xl text-center relative overflow-hidden shadow-2xl">
-<div class="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent pointer-events-none"></div>
-<div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
-<span class="font-label-caps text-label-caps text-secondary font-bold uppercase tracking-wider mb-space-sm">Instant Developer Setup</span>
-<h2 class="font-headline-xl text-headline-xl md:font-display text-on-surface font-semibold tracking-tight mb-space-md">
-            Ready to cut codebase onboarding time by 80%?
+<!-- SECTION: FAQ (Interactive Smooth Accordion with Rotating Chevron) -->
+<section class="w-full py-20 px-4 bg-[#181818] border-t border-[#272727] reveal-on-scroll" id="faq">
+<div class="max-w-4xl mx-auto">
+<div class="text-center max-w-xl mx-auto mb-16">
+<span class="font-mono text-xs text-[#4EDEA3] font-semibold uppercase tracking-wider block mb-2">Questions and Answers</span>
+<h2 class="text-3xl md:text-4xl font-semibold text-[#FFFFFF] tracking-tight leading-snug">
+            Frequently Asked Questions
           </h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-space-xl">
-            Index your first public or private repository in under two minutes. Experience deterministic AI comprehension with zero hallucinated methods.
+<p class="text-sm md:text-base text-[#C7C4D7] mt-3">
+            Clear technical details on isolation, citation accuracy, and data security.
           </p>
-<a class="px-space-2xl py-space-md bg-primary text-on-primary font-headline-sm text-headline-sm rounded-lg shadow-xl hover:bg-primary-container hover:text-on-primary-container transition-all flex items-center justify-center gap-space-sm group" href="#">
-<svg aria-hidden="true" class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+</div>
+<div class="space-y-4">
+<!-- Question 1 -->
+<div class="faq-item bg-[#1F1F1F] border border-[#272727] rounded-xl overflow-hidden transition-colors duration-300 hover:border-[#6366F1]/40">
+<button aria-expanded="true" class="faq-trigger w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50">
+<h3 class="text-base font-semibold text-[#FFFFFF]">How does DevDocs AI isolate untrusted or private source code?</h3>
+<span class="material-symbols-outlined text-[#908FA0] faq-chevron faq-rotated shrink-0 text-xl">expand_more</span>
+</button>
+<div class="faq-answer faq-open px-6 pb-6">
+<div class="overflow-hidden">
+<p class="text-sm text-[#C7C4D7] leading-relaxed">
+                Every repository indexing task executes inside an ephemeral microVM container. Containers are destroyed immediately upon abstract syntax tree extraction. We maintain SOC2 Type II compliance and zero data retention for training base models.
+              </p>
+</div>
+</div>
+</div>
+<!-- Question 2 -->
+<div class="faq-item bg-[#1F1F1F] border border-[#272727] rounded-xl overflow-hidden transition-colors duration-300 hover:border-[#6366F1]/40">
+<button aria-expanded="false" class="faq-trigger w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50">
+<h3 class="text-base font-semibold text-[#FFFFFF]">How is commit citation pinning kept deterministic and accurate?</h3>
+<span class="material-symbols-outlined text-[#908FA0] faq-chevron shrink-0 text-xl">expand_more</span>
+</button>
+<div class="faq-answer px-6 pb-0">
+<div class="overflow-hidden">
+<p class="text-sm text-[#C7C4D7] leading-relaxed pb-6">
+                We extract language symbols using Tree Sitter parsers directly tied to the target Git commit SHA. If code changes upstream, queries remain anchored to your specified commit until you manually trigger an index rebase.
+              </p>
+</div>
+</div>
+</div>
+<!-- Question 3 -->
+<div class="faq-item bg-[#1F1F1F] border border-[#272727] rounded-xl overflow-hidden transition-colors duration-300 hover:border-[#6366F1]/40">
+<button aria-expanded="false" class="faq-trigger w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50">
+<h3 class="text-base font-semibold text-[#FFFFFF]">Are private repositories supported on the free plan?</h3>
+<span class="material-symbols-outlined text-[#908FA0] faq-chevron shrink-0 text-xl">expand_more</span>
+</button>
+<div class="faq-answer px-6 pb-0">
+<div class="overflow-hidden">
+<p class="text-sm text-[#C7C4D7] leading-relaxed pb-6">
+                The free tier includes up to 10 public repositories forever. Private repository indexing requires a Team or Enterprise seat to provision dedicated encrypted single tenant VPC storage.
+              </p>
+</div>
+</div>
+</div>
+<!-- Question 4 -->
+<div class="faq-item bg-[#1F1F1F] border border-[#272727] rounded-xl overflow-hidden transition-colors duration-300 hover:border-[#6366F1]/40">
+<button aria-expanded="false" class="faq-trigger w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50">
+<h3 class="text-base font-semibold text-[#FFFFFF]">What programming languages and package managers are parsed?</h3>
+<span class="material-symbols-outlined text-[#908FA0] faq-chevron shrink-0 text-xl">expand_more</span>
+</button>
+<div class="faq-answer px-6 pb-0">
+<div class="overflow-hidden">
+<p class="text-sm text-[#C7C4D7] leading-relaxed pb-6">
+                We natively parse TypeScript, JavaScript, Rust, Go, Python, Java, C++, Ruby, and Elixir. Workspace resolutions include support for npm, pnpm, yarn workspaces, Cargo, and Go modules.
+              </p>
+</div>
+</div>
+</div>
+<!-- Question 5 -->
+<div class="faq-item bg-[#1F1F1F] border border-[#272727] rounded-xl overflow-hidden transition-colors duration-300 hover:border-[#6366F1]/40">
+<button aria-expanded="false" class="faq-trigger w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50">
+<h3 class="text-base font-semibold text-[#FFFFFF]">Do rate limits apply to repository queries?</h3>
+<span class="material-symbols-outlined text-[#908FA0] faq-chevron shrink-0 text-xl">expand_more</span>
+</button>
+<div class="faq-answer px-6 pb-0">
+<div class="overflow-hidden">
+<p class="text-sm text-[#C7C4D7] leading-relaxed pb-6">
+                Standard accounts include generous burst capacity of 120 queries per minute per organization, backed by low latency edge caching that serves cached symbol lookups in under 90 milliseconds.
+              </p>
+</div>
+</div>
+</div>
+<!-- Question 6 -->
+<div class="faq-item bg-[#1F1F1F] border border-[#272727] rounded-xl overflow-hidden transition-colors duration-300 hover:border-[#6366F1]/40">
+<button aria-expanded="false" class="faq-trigger w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50">
+<h3 class="text-base font-semibold text-[#FFFFFF]">Can we export generated AST graphs or documentation artifacts?</h3>
+<span class="material-symbols-outlined text-[#908FA0] faq-chevron shrink-0 text-xl">expand_more</span>
+</button>
+<div class="faq-answer px-6 pb-0">
+<div class="overflow-hidden">
+<p class="text-sm text-[#C7C4D7] leading-relaxed pb-6">
+                Yes. All indexed symbol tables, dependency call diagrams, and architectural summaries can be exported as structured JSON, OpenAPI specifications, or standard Markdown files via our REST API.
+              </p>
+</div>
+</div>
+</div>
+<!-- Question 7 -->
+<div class="faq-item bg-[#1F1F1F] border border-[#272727] rounded-xl overflow-hidden transition-colors duration-300 hover:border-[#6366F1]/40">
+<button aria-expanded="false" class="faq-trigger w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50">
+<h3 class="text-base font-semibold text-[#FFFFFF]">How does pricing scale as codebases grow beyond one million lines?</h3>
+<span class="material-symbols-outlined text-[#908FA0] faq-chevron shrink-0 text-xl">expand_more</span>
+</button>
+<div class="faq-answer px-6 pb-0">
+<div class="overflow-hidden">
+<p class="text-sm text-[#C7C4D7] leading-relaxed pb-6">
+                Pricing is seat based, not token based. Your organization pays a flat monthly fee per contributing developer rather than paying unpredictable token fees for querying large code files.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: BOTTOM HIGH-CONVERTING CTA BANNER (Identical CTA + Risk Reversal) -->
+<section class="w-full py-20 px-4 bg-[#000000] reveal-on-scroll" id="cta">
+<div class="max-w-4xl mx-auto bg-[#181818] border border-[#272727] hover:border-[#4EDEA3]/40 rounded-2xl p-8 md:p-12 text-center shadow-2xl transition-colors duration-500">
+<span class="font-mono text-xs text-[#4EDEA3] font-semibold uppercase tracking-wider block mb-4">Instant Developer Setup</span>
+<h2 class="text-3xl md:text-5xl font-semibold text-[#FFFFFF] tracking-tight leading-tight mb-4 text-balance">
+          Ready to cut codebase onboarding time by 80%?
+        </h2>
+<p class="text-sm md:text-base text-[#C7C4D7] max-w-xl mx-auto mb-8 text-pretty">
+          Index your first repository in under two minutes. Experience deterministic AI comprehension with zero hallucinated methods.
+        </p>
+<!-- Final CTA identical to the top: py-2 px-3 (8px py, 12px px) -->
+<div class="flex flex-col items-center gap-4">
+<a class="group py-2 px-3 bg-[#FFFFFF] text-[#000000] font-semibold text-sm rounded-lg hover:bg-[#DFE2EF] hover:shadow-[0_0_20px_rgba(255,255,255,0.35)] active:scale-[0.98] active:translate-y-px transition-all duration-300 ease-brand inline-flex items-center justify-center gap-2 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50 focus:ring-offset-2 focus:ring-offset-[#181818]" href="#workbench">
+<svg aria-hidden="true" class="w-4 h-4 fill-current transition-transform duration-300 group-hover:scale-110" viewbox="0 0 24 24">
 <path clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill-rule="evenodd"></path>
 </svg>
-<span>Get Started with GitHub</span>
-<span class="material-symbols-outlined text-headline-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+<span>Start free with GitHub</span>
+<span class="material-symbols-outlined text-sm transition-transform duration-300 group-hover:translate-x-0.5">arrow_forward</span>
 </a>
-<p class="font-label-caps text-label-caps text-outline mt-space-md">
-            No credit card required • 10 free public repositories • SOC2 Type II Certified
+<!-- Risk reversal -->
+<p class="font-mono text-xs text-[#908FA0]">
+            No credit card required • 10 free public repositories • SOC2 Type II Certified • Cancel anytime
           </p>
 </div>
 </div>
 </section>
-<!-- Trust Badges & Security Compliance Matrix -->
-<section class="w-full py-space-xl">
-<div class="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-space-2xl text-on-surface-variant font-label-caps text-label-caps">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-secondary text-body-lg">verified</span>
+<!-- SECTION: SECURITY COMPLIANCE BADGES -->
+<section class="w-full py-12 px-4 bg-[#181818] border-t border-[#272727] reveal-on-scroll">
+<div class="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-8 text-[#C7C4D7] font-mono text-xs">
+<div class="flex items-center gap-2 hover:text-[#FFFFFF] transition-colors duration-200">
+<span class="material-symbols-outlined text-base text-[#4EDEA3]">verified</span>
 <span>SOC2 Type II Certified</span>
 </div>
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-primary text-body-lg">lock</span>
-<span>256-bit AES Hardware Encryption</span>
+<div class="flex items-center gap-2 hover:text-[#FFFFFF] transition-colors duration-200">
+<span class="material-symbols-outlined text-base text-[#C0C1FF]">lock</span>
+<span>256 bit Hardware Encryption</span>
 </div>
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-tertiary text-body-lg">verified_user</span>
+<div class="flex items-center gap-2 hover:text-[#FFFFFF] transition-colors duration-200">
+<span class="material-symbols-outlined text-base text-[#FFB95F]">verified_user</span>
 <span>Official GitHub Integration Partner</span>
 </div>
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-secondary text-body-lg">visibility_off</span>
+<div class="flex items-center gap-2 hover:text-[#FFFFFF] transition-colors duration-200">
+<span class="material-symbols-outlined text-base text-[#4EDEA3]">visibility_off</span>
 <span>Zero Training On Private Code</span>
 </div>
 </div>
 </section>
-<!-- Structured Technical Footer Links -->
-<div class="w-full max-w-6xl mx-auto py-space-2xl grid grid-cols-2 md:grid-cols-4 gap-space-xl">
-<div class="space-y-space-sm">
-<span class="font-label-caps text-label-caps text-on-surface font-bold uppercase tracking-wider block">Intelligence Engine</span>
-<ul class="space-y-space-xs font-body-sm text-body-sm text-outline">
-<li><a class="hover:text-on-surface transition-colors" href="#">Tree-sitter AST Parser</a></li>
-<li><a class="hover:text-on-surface transition-colors" href="#">Commit SHA Pinning</a></li>
-<li><a class="hover:text-on-surface transition-colors" href="#">Monorepo Dependency Graphs</a></li>
-<li><a class="hover:text-on-surface transition-colors" href="#">Semantic Symbol Search</a></li>
-</ul>
+</main>
+<!-- FOOTER -->
+<footer class="w-full bg-[#000000] border-t border-[#272727] py-12 px-4">
+<div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-3">
+<span class="font-semibold text-sm text-[#FFFFFF]">DevDocs AI</span>
+<span class="text-[#908FA0] text-xs">•</span>
+<span class="font-mono text-xs text-[#4EDEA3] flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-[#4EDEA3]"></span>
+        All Systems Operational
+      </span>
 </div>
-<div class="space-y-space-sm">
-<span class="font-label-caps text-label-caps text-on-surface font-bold uppercase tracking-wider block">Resources</span>
-<ul class="space-y-space-xs font-body-sm text-body-sm text-outline">
-<li><a class="hover:text-on-surface transition-colors" href="#">Documentation</a></li>
-<li><a class="hover:text-on-surface transition-colors" href="#">API &amp; Webhooks</a></li>
-<li><a class="hover:text-on-surface transition-colors" href="#">Security Whitepaper</a></li>
-<li><a class="hover:text-on-surface transition-colors" href="#">Changelog (v3.4.2)</a></li>
-</ul>
+<nav aria-label="Footer" class="flex flex-wrap items-center gap-6 text-xs text-[#908FA0]">
+<a class="hover:text-[#FFFFFF] transition-colors duration-300 ease-brand" href="#">Privacy Policy</a>
+<a class="hover:text-[#FFFFFF] transition-colors duration-300 ease-brand" href="#">Terms of Service</a>
+<a class="hover:text-[#FFFFFF] transition-colors duration-300 ease-brand" href="#">Security Whitepaper</a>
+<a class="hover:text-[#FFFFFF] transition-colors duration-300 ease-brand" href="#">System Status</a>
+</nav>
+<p class="text-xs text-[#908FA0]">
+        © 2025 DevDocs AI Engine. All rights reserved.
+      </p>
 </div>
-<div class="space-y-space-sm">
-<span class="font-label-caps text-label-caps text-on-surface font-bold uppercase tracking-wider block">Integrations</span>
-<ul class="space-y-space-xs font-body-sm text-body-sm text-outline">
-<li><a class="hover:text-on-surface transition-colors" href="#">GitHub Apps</a></li>
-<li><a class="hover:text-on-surface transition-colors" href="#">GitLab Self-Hosted</a></li>
-<li><a class="hover:text-on-surface transition-colors" href="#">VS Code Extension</a></li>
-<li><a class="hover:text-on-surface transition-colors" href="#">JetBrains IDE Plugin</a></li>
-</ul>
-</div>
-<div class="space-y-space-sm">
-<span class="font-label-caps text-label-caps text-on-surface font-bold uppercase tracking-wider block">Security &amp; Legal</span>
-<ul class="space-y-space-xs font-body-sm text-body-sm text-outline">
-<li><a class="hover:text-on-surface transition-colors" href="#">Privacy Policy</a></li>
-<li><a class="hover:text-on-surface transition-colors" href="#">Terms of Service</a></li>
-<li><a class="hover:text-on-surface transition-colors" href="#">GDPR &amp; Data Subprocessors</a></li>
-<li><a class="hover:text-on-surface transition-colors" href="#">System Status (99.99%)</a></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
+</footer>
+<!-- Interactive Scripts -->
 <script>
-  function highlightSnippet(elementId) {
-    const el = document.getElementById(elementId);
-    if (!el) return;
-    const originalClasses = el.className;
-    el.classList.add('ring-2', 'ring-primary', 'brightness-125');
-    setTimeout(() => {
-      el.className = originalClasses;
-    }, 1200);
-  }
-</script></main><footer class="w-full bg-surface-container-lowest py-space-xl"><div class="w-full px-space-gutter-desktop flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><span class="font-label-caps text-label-caps text-on-surface-variant">DevDocs AI Technical Intelligence</span><span class="text-outline text-body-sm font-body-sm">•</span><span class="font-label-caps text-label-caps text-secondary">All Nodes Operational</span></div><p class="font-body-sm text-body-sm text-outline">© 2025 DevDocs AI Engine. All rights reserved.</p></div></footer></body></html>
+    document.addEventListener('DOMContentLoaded', () => {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // 1. Scroll-triggered entrance animations (B7 & add-motion guidelines)
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+      if (prefersReducedMotion) {
+        revealElements.forEach(el => el.classList.add('is-visible'));
+      } else {
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.12,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(el => observer.observe(el));
+      }
+
+      // 2. Tagline Reveal on Scroll (B11)
+      const taglineSection = document.getElementById('tagline-reveal-section');
+      const words = document.querySelectorAll('.reveal-word');
+
+      if (taglineSection && words.length) {
+        if (prefersReducedMotion) {
+          words.forEach(w => {
+            w.style.opacity = '1';
+            w.style.color = '#FFFFFF';
+          });
+        } else {
+          function updateTaglineReveal() {
+            const rect = taglineSection.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            const start = windowHeight * 0.85;
+            const end = windowHeight * 0.2;
+            const total = start - end;
+            const current = start - rect.top;
+            const progress = Math.min(Math.max(current / total, 0), 1);
+
+            const activeIndex = Math.floor(progress * words.length);
+
+            words.forEach((word, index) => {
+              if (index <= activeIndex) {
+                word.style.opacity = '1';
+                word.style.color = '#FFFFFF';
+              } else {
+                word.style.opacity = '0.3';
+                word.style.color = '#DFE2EF';
+              }
+            });
+          }
+
+          window.addEventListener('scroll', updateTaglineReveal, { passive: true });
+          window.addEventListener('resize', updateTaglineReveal);
+          updateTaglineReveal();
+        }
+      }
+
+      // 3. Terminal Live Typing & Prompt Simulation
+      const promptEl = document.getElementById('prompt-animated-text');
+      if (promptEl && !prefersReducedMotion) {
+        const prompts = [
+          "Ask deep architecture question... (Cmd K)",
+          "Where is request validation executed?",
+          "Trace handleRequest invocation loop...",
+          "Find circular dependencies in /lib..."
+        ];
+        let promptIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeLoop() {
+          const currentText = prompts[promptIndex];
+          if (isDeleting) {
+            promptEl.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+          } else {
+            promptEl.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+          }
+
+          let delay = isDeleting ? 30 : 65;
+
+          if (!isDeleting && charIndex === currentText.length) {
+            delay = 3000; // Pause at end of text
+            isDeleting = true;
+          } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            promptIndex = (promptIndex + 1) % prompts.length;
+            delay = 600;
+          }
+
+          setTimeout(typeLoop, delay);
+        }
+
+        // Delay typing loop start slightly
+        setTimeout(typeLoop, 1200);
+      }
+
+      // 4. Interactive Citation Highlights to Code Terminal Lines
+      const citations = document.querySelectorAll('.interactive-citation');
+      citations.forEach(citation => {
+        const targetId = citation.getAttribute('data-target');
+        const targetLine = document.getElementById(targetId);
+        if (!targetLine) return;
+
+        const isSecondary = targetId === 'code-line-19';
+        const glowClass = isSecondary ? 'line-glow-secondary' : 'line-glow-primary';
+
+        citation.addEventListener('mouseenter', () => {
+          targetLine.classList.add(glowClass);
+        });
+        citation.addEventListener('mouseleave', () => {
+          targetLine.classList.remove(glowClass);
+        });
+        citation.addEventListener('click', (e) => {
+          e.preventDefault();
+          targetLine.classList.add(glowClass);
+          targetLine.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          setTimeout(() => {
+            targetLine.classList.remove(glowClass);
+          }, 2400);
+        });
+      });
+
+      // 5. FAQ Accordion Expansion micro-interaction
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const trigger = item.querySelector('.faq-trigger');
+        const answer = item.querySelector('.faq-answer');
+        const chevron = item.querySelector('.faq-chevron');
+
+        if (!trigger || !answer) return;
+
+        trigger.addEventListener('click', () => {
+          const isOpen = answer.classList.contains('faq-open');
+          
+          if (isOpen) {
+            answer.classList.remove('faq-open');
+            answer.classList.remove('pb-6');
+            answer.classList.add('pb-0');
+            if (chevron) chevron.classList.remove('faq-rotated');
+            trigger.setAttribute('aria-expanded', 'false');
+          } else {
+            answer.classList.add('faq-open');
+            answer.classList.remove('pb-0');
+            answer.classList.add('pb-6');
+            if (chevron) chevron.classList.add('faq-rotated');
+            trigger.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    });
+  </script>
+</body></html>
